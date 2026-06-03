@@ -418,37 +418,48 @@ async def _run_extraction(job_id: str, pdf_path: Path) -> None:
     try:
         job["stage"] = "parsing_pdf"
         job["progress"] = 10
-
-        # Small yield so the stage update is visible
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(0.3)
 
         job["stage"] = "finding_tables"
         job["progress"] = 30
 
-        extract_script = SCRIPTS / "extract_specs.py"
-        loop = asyncio.get_event_loop()
+        if DEMO_MODE:
+            # Demo mode: use pre-built specs.json from PROJECT_ROOT.
+            # This avoids the pdfplumber subprocess (which can time out in
+            # constrained serverless environments). The pre-built file is the
+            # ACS37002 spec set; verify still runs for real against it.
+            await asyncio.sleep(1.5)
+            src_specs = PROJECT_ROOT / "specs.json"
+            if not src_specs.exists():
+                raise FileNotFoundError(
+                    "Demo specs.json not found in project root. "
+                    "Run extract_specs.py locally first."
+                )
+            shutil.copy2(src_specs, specs_path)
+        else:
+            extract_script = SCRIPTS / "extract_specs.py"
+            loop = asyncio.get_event_loop()
 
-        rc, stdout, stderr = await loop.run_in_executor(
-            None,
-            lambda: _run(
-                [sys.executable, str(extract_script), str(pdf_path), "-o", str(specs_path)],
-                timeout=270,
-            ),
-        )
-
-        if rc != 0:
-            job["stage"] = "extraction_failed"
-            job["error"] = (
-                stderr.strip()
-                or "Extraction failed. This may be a scanned or encrypted PDF. "
-                   "Try exporting a text-layer PDF from Acrobat."
+            rc, stdout, stderr = await loop.run_in_executor(
+                None,
+                lambda: _run(
+                    [sys.executable, str(extract_script), str(pdf_path), "-o", str(specs_path)],
+                    timeout=270,
+                ),
             )
-            return
+
+            if rc != 0:
+                job["stage"] = "extraction_failed"
+                job["error"] = (
+                    stderr.strip()
+                    or "Extraction failed. This may be a scanned or encrypted PDF. "
+                       "Try exporting a text-layer PDF from Acrobat."
+                )
+                return
 
         job["stage"] = "building_spec_list"
         job["progress"] = 80
-
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(0.3)
 
         summary = _parse_specs_summary(specs_path)
         job["specs_summary"] = summary
@@ -476,12 +487,13 @@ async def _run_generation(job_id: str, req: GenerateRequest) -> None:
 
         loop = asyncio.get_event_loop()
 
-        if DEMO_MODE or not ANTHROPIC_API_KEY:
-            job["stage"] = "generating_demo"
-            await asyncio.sleep(0.5)  # brief delay so the UI stage is visible
-            _copy_demo_files(job_path, req.documents)
-        else:
+        if ANTHROPIC_API_KEY:
             await _generate_with_claude(job_id, specs_path, job_path, req.documents, req.audience_note)
+        else:
+            # No API key: copy pre-built demo files
+            job["stage"] = "generating_demo"
+            await asyncio.sleep(0.5)
+            _copy_demo_files(job_path, req.documents)
 
         job["stage"] = "verifying"
         job["progress"] = 60
