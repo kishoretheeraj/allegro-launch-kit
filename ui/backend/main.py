@@ -288,7 +288,7 @@ def _run_verify(job_id: str, job_path: Path, documents: str) -> tuple[bool, str,
 
     # Run verify.py; capture output to parse PASS/FAIL tally manually
     cmd = [sys.executable, str(verify_script), str(specs_path), "--no-color"] + md_files
-    rc, stdout, stderr = _run(cmd, timeout=60)
+    rc, stdout, stderr = _run(cmd, timeout=120)
 
     # Parse the plain-text report for tally and gaps
     passed = rc == 0
@@ -343,7 +343,7 @@ def _run_render_docx(job_path: Path, documents: str) -> list[str]:
             continue
         rc, stdout, stderr = _run(
             [sys.executable, str(render_script), str(md_path), str(docx_path), "--verified"],
-            timeout=60,
+            timeout=120,
         )
         if rc == 0:
             rendered.append(docx_name)
