@@ -32,35 +32,24 @@ type Step =
   | "complete"         // Screen 6: download
   | "error";
 
-// ── Logo ─────────────────────────────────────────────────────────────────────
-function AllegroLogo() {
+// ── Allegro MicroSystems brand mark ──────────────────────────────────────────
+function AllegroMark() {
   return (
-    <div className="flex items-center gap-3">
-      {/* Stylised "A" mark derived from Allegro's angular wordmark motif */}
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <rect width="28" height="28" rx="6" fill="#1C3657" />
-        <path
-          d="M14 5L22 22H18.5L14 11.5L9.5 22H6L14 5Z"
-          fill="#F26524"
-        />
-        <path d="M10.5 18H17.5L18.5 21H9.5L10.5 18Z" fill="white" fillOpacity="0.9" />
-      </svg>
-      <div className="flex flex-col leading-none">
-        <span className="text-xs font-semibold tracking-widest uppercase text-[var(--allegro-orange)]">
-          Allegro
-        </span>
-        <span className="text-sm font-bold text-[var(--allegro-navy)] tracking-tight">
-          Launch Kit
-        </span>
-      </div>
-    </div>
+    <svg
+      width="38"
+      height="38"
+      viewBox="0 0 38 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect width="38" height="38" rx="5" fill="#F26524" />
+      {/* Stylised italic "a" — approximates the Allegro brand glyph */}
+      <path
+        d="M23.5 11.5C21.8 10.5 19.8 10 17.5 10C14.5 10 12 11 10.2 12.8C8.4 14.6 7.5 17 7.5 20C7.5 22.8 8.4 25 10.2 26.6C12 28.2 14.4 29 17.5 29C19.5 29 21.2 28.6 22.8 27.8V29H27V11H23.5V11.5ZM23.5 24.5C22.2 25.6 20.5 26.2 18.5 26.2C16.5 26.2 14.8 25.6 13.6 24.3C12.4 23 11.8 21.3 11.8 19.2C11.8 17.1 12.4 15.4 13.6 14.2C14.8 13 16.4 12.3 18.4 12.3C20.3 12.3 22 13 23.5 14.4V24.5Z"
+        fill="white"
+      />
+    </svg>
   );
 }
 
@@ -244,10 +233,35 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <header className="sticky top-0 z-10 bg-white border-b border-[var(--allegro-border)]">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 py-4 flex items-center justify-between">
-          <AllegroLogo />
+      {/* Allegro MicroSystems site nav bar */}
+      <div className="bg-[var(--allegro-navy)]">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <AllegroMark />
+            <div className="leading-none">
+              <div className="text-white font-bold text-lg tracking-tight leading-none">
+                allegro
+              </div>
+              <div className="text-white/60 text-[10px] tracking-[0.18em] uppercase font-medium leading-none mt-0.5">
+                microsystems
+              </div>
+            </div>
+            <div className="w-px h-7 bg-white/20 mx-2 hidden sm:block" aria-hidden="true" />
+            <span className="hidden sm:inline text-[var(--allegro-orange)] text-sm font-semibold">
+              Launch Kit
+            </span>
+          </div>
+          <span className="text-white/40 text-xs hidden sm:inline">Internal Tools</span>
+        </div>
+      </div>
+
+      {/* App header */}
+      <header className="sticky top-0 z-10 bg-white border-b border-[var(--allegro-border)] shadow-sm">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 py-3 flex items-center justify-between">
+          <span className="text-sm font-semibold text-[var(--allegro-navy)]">
+            Launch Kit
+            <span className="ml-2 text-xs font-normal text-[var(--color-muted)]">· datasheet → verified collateral</span>
+          </span>
           {step !== "upload" && step !== "uploading" && (
             <button
               type="button"
@@ -334,15 +348,22 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-[var(--allegro-border)] bg-white">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 py-4 flex items-center justify-between">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <p className="text-xs text-[var(--color-muted)]">
             Allegro Launch Kit · Every spec cited to source
           </p>
-          {demoMode && step !== "upload" && (
-            <span className="text-[10px] font-semibold text-[var(--color-warning-text)] bg-[var(--color-warning-bg)] border border-[var(--color-warning-border)] px-2 py-0.5 rounded-full">
-              Demo mode
-            </span>
-          )}
+          <div className="flex items-center gap-3">
+            {demoMode && step !== "upload" && (
+              <span className="text-[10px] font-semibold text-[var(--color-warning-text)] bg-[var(--color-warning-bg)] border border-[var(--color-warning-border)] px-2 py-0.5 rounded-full">
+                Demo mode
+              </span>
+            )}
+            <p className="text-[10px] text-[var(--color-muted)]">
+              Built with ♥ by{" "}
+              <span className="font-medium text-[var(--allegro-navy)]">Kishore Theeraj</span>
+              {" "}· Thayer School of Engineering, Dartmouth
+            </p>
+          </div>
         </div>
       </footer>
     </div>
