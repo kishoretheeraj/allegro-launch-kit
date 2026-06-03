@@ -9,6 +9,7 @@ import { OptionsScreen } from "@/components/screens/OptionsScreen";
 import { GenerationProgressScreen } from "@/components/screens/GenerationProgressScreen";
 import { ResultsScreen } from "@/components/screens/ResultsScreen";
 import { ErrorMessage } from "@/components/ErrorMessage";
+import { AboutModal } from "@/components/AboutModal";
 import {
   uploadPDF,
   getJobStatus,
@@ -95,6 +96,7 @@ const SCREEN_TITLES: Partial<Record<Step, string>> = {
 // ── Main component ────────────────────────────────────────────────────────────
 export default function Home() {
   const [step, setStep] = useState<Step>("upload");
+  const [showAbout, setShowAbout] = useState(false);
   const [jobId, setJobId] = useState<string | null>(null);
   const [pdfName, setPdfName] = useState("");
   const [pdfSize, setPdfSize] = useState(0);
@@ -252,6 +254,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
       {/* Allegro MicroSystems site header — white background matching allegromicro.com */}
       <header className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between">
@@ -364,9 +367,18 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-[var(--allegro-border)] bg-white">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <p className="text-xs text-[var(--color-muted)]">
-            Allegro Launch Kit · Every spec cited to source
-          </p>
+          <div className="flex items-center gap-3">
+            <p className="text-xs text-[var(--color-muted)]">
+              Allegro Launch Kit · Every spec cited to source
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowAbout(true)}
+              className="text-xs text-[var(--color-muted)] hover:text-[var(--allegro-navy)] underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2 rounded"
+            >
+              About
+            </button>
+          </div>
           <div className="flex items-center gap-3">
             {demoMode && step !== "upload" && (
               <span className="text-[10px] font-semibold text-[var(--color-warning-text)] bg-[var(--color-warning-bg)] border border-[var(--color-warning-border)] px-2 py-0.5 rounded-full">

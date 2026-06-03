@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Info } from "lucide-react";
+import { Info, ChevronDown, ChevronUp } from "lucide-react";
 import type { GenerateOptions } from "@/lib/api";
 
 interface Props {
@@ -10,19 +10,45 @@ interface Props {
   isGenerating?: boolean;
 }
 
-type DocOption = "faq" | "checklist" | "both";
+type DocOption = "faq" | "checklist" | "product_brief" | "both" | "all";
 type FormatOption = "markdown" | "docx" | "both";
+
+// Team → documents mapping
+const TEAM_MAP: Record<string, { documents: DocOption; label: string; description: string }> = {
+  marketing: {
+    documents: "faq",
+    label: "Marketing / Communications",
+    description: "Customer FAQ — answers distributors and customers ask",
+  },
+  fae: {
+    documents: "checklist",
+    label: "Field Applications Engineering",
+    description: "Design-in checklist — confirms the part fits a customer's design",
+  },
+  sales: {
+    documents: "product_brief",
+    label: "Sales / Distribution",
+    description: "Product brief — one-page spec summary for distributors and reps",
+  },
+  launch: {
+    documents: "all",
+    label: "Full Product Launch",
+    description: "All three documents — FAQ, checklist, and product brief (recommended)",
+  },
+};
 
 function ChoiceButton({
   selected,
   onClick,
   label,
   description,
+  badge,
 }: {
   selected: boolean;
   onClick: () => void;
   label: string;
   description?: string;
+  badge?: string;
 }) {
   return (
     <button
@@ -50,8 +76,15 @@ function ChoiceButton({
           <span className="block h-full w-full rounded-full scale-[0.4] bg-white" />
         )}
       </span>
-      <div>
-        <p className="text-sm font-semibold text-[var(--allegro-navy)]">{label}</p>
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 flex-wrap">
+          <p className="text-sm font-semibold text-[var(--allegro-navy)]">{label}</p>
+          {badge && (
+            <span className="text-[10px] font-semibold bg-[var(--allegro-navy)] text-white px-1.5 py-0.5 rounded-full">
+              {badge}
+            </span>
+          )}
+        </div>
         {description && (
           <p className="mt-0.5 text-xs text-[var(--color-muted)]">{description}</p>
         )}
@@ -61,11 +94,15 @@ function ChoiceButton({
 }
 
 export function OptionsScreen({ onGenerate, onBack, isGenerating = false }: Props) {
-  const [documents, setDocuments] = useState<DocOption>("both");
+  const [team, setTeam] = useState<string>("launch");
+  const [advancedOpen, setAdvancedOpen] = useState(false);
+  const [advancedDocs, setAdvancedDocs] = useState<DocOption>("all");
   const [format, setFormat] = useState<FormatOption>("both");
   const [audienceNote, setAudienceNote] = useState("");
 
   const MAX_NOTE = 200;
+
+  const documents = advancedOpen ? advancedDocs : (TEAM_MAP[team]?.documents ?? "all");
 
   function handleSubmit() {
     onGenerate({ documents, format, audience_note: audienceNote.trim() });
@@ -75,38 +112,61 @@ export function OptionsScreen({ onGenerate, onBack, isGenerating = false }: Prop
     <div className="flex flex-col gap-7">
       <div>
         <h2 className="text-xl font-semibold text-[var(--allegro-navy)]">
-          What would you like to generate?
+          Who needs these documents?
         </h2>
         <p className="mt-1 text-sm text-[var(--color-muted)]">
-          Make your selections below, then we&apos;ll build and verify your documents automatically.
+          We&apos;ll generate the right documents for your team automatically.
         </p>
       </div>
 
-      {/* Document type */}
+      {/* Team-based picker */}
       <fieldset>
         <legend className="text-sm font-semibold text-[var(--allegro-navy)] mb-2.5">
-          Documents
+          Team
         </legend>
-        <div role="radiogroup" aria-label="Document type" className="flex flex-col gap-2">
-          <ChoiceButton
-            selected={documents === "faq"}
-            onClick={() => setDocuments("faq")}
-            label="Customer FAQ"
-            description="Answers the questions distributors and customers ask about this part"
-          />
-          <ChoiceButton
-            selected={documents === "checklist"}
-            onClick={() => setDocuments("checklist")}
-            label="Design-in checklist for field engineers"
-            description="Confirms the part fits a customer's design — supply, accuracy, layout"
-          />
-          <ChoiceButton
-            selected={documents === "both"}
-            onClick={() => setDocuments("both")}
-            label="Both (recommended for a launch)"
-            description="Generate the FAQ and the checklist together"
-          />
+        <div role="radiogroup" aria-label="Team" className="flex flex-col gap-2">
+          {Object.entries(TEAM_MAP).map(([key, cfg]) => (
+            <ChoiceButton
+              key={key}
+              selected={!advancedOpen && team === key}
+              onClick={() => { setTeam(key); setAdvancedOpen(false); }}
+              label={cfg.label}
+              description={cfg.description}
+              badge={key === "launch" ? "Recommended" : undefined}
+            />
+          ))}
         </div>
+
+        {/* Advanced: custom document selection */}
+        <button
+          type="button"
+          onClick={() => setAdvancedOpen((v) => !v)}
+          className="mt-3 flex items-center gap-1 text-xs font-medium text-[var(--color-muted)] hover:text-[var(--allegro-navy)] focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-1 rounded"
+          aria-expanded={advancedOpen}
+        >
+          {advancedOpen ? <ChevronUp size={12} aria-hidden="true" /> : <ChevronDown size={12} aria-hidden="true" />}
+          {advancedOpen ? "Hide custom selection" : "Choose specific documents instead"}
+        </button>
+
+        {advancedOpen && (
+          <div className="mt-3 pl-3 border-l-2 border-gray-200 flex flex-col gap-2">
+            {([
+              ["faq", "Customer FAQ", "answers customers and distributors ask"],
+              ["checklist", "Design-in Checklist", "for field engineers reviewing a design"],
+              ["product_brief", "Product Brief", "one-page summary for sales and distribution"],
+              ["both", "FAQ + Checklist", "standard two-doc set"],
+              ["all", "All three documents", "FAQ, checklist, and product brief"],
+            ] as [DocOption, string, string][]).map(([val, label, desc]) => (
+              <ChoiceButton
+                key={val}
+                selected={advancedDocs === val}
+                onClick={() => setAdvancedDocs(val)}
+                label={label}
+                description={desc}
+              />
+            ))}
+          </div>
+        )}
       </fieldset>
 
       {/* Format */}

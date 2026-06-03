@@ -35,7 +35,7 @@ export interface SpecsSummary {
 }
 
 export interface GenerateOptions {
-  documents: "faq" | "checklist" | "both";
+  documents: "faq" | "checklist" | "product_brief" | "both" | "all";
   format: "markdown" | "docx" | "both";
   audience_note: string;
 }
@@ -117,6 +117,12 @@ export async function getJobResults(jobId: string): Promise<JobResults> {
 
 export function getDownloadUrl(jobId: string, filename: string): string {
   return `${BASE}/api/jobs/${jobId}/download/${encodeURIComponent(filename)}`;
+}
+
+export async function getPreviewContent(jobId: string, filename: string): Promise<string> {
+  const res = await fetch(`${BASE}/api/jobs/${jobId}/preview/${encodeURIComponent(filename)}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.text();
 }
 
 export async function deleteJob(jobId: string): Promise<void> {

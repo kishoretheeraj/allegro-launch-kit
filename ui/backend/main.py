@@ -10,8 +10,9 @@ Job lifecycle:
   2. GET  /api/jobs/{id}/status  — poll for current stage + progress
   3. GET  /api/jobs/{id}/summary — parsed extraction results (spec table, counts)
   4. POST /api/jobs/{id}/generate — options → generation → verify → optional docx
-  5. GET  /api/jobs/{id}/download/{filename} — stream a generated file
-  6. DELETE /api/jobs/{id} — clean up tmp directory
+  5. GET  /api/jobs/{id}/preview/{filename}  — return raw markdown for inline viewing
+  6. GET  /api/jobs/{id}/download/{filename} — stream a generated file for download
+  7. DELETE /api/jobs/{id} — clean up tmp directory
 
 DEMO_MODE=true (in .env): skips the Claude API generation step and copies the
 pre-built out_faq.md / out_fae_checklist.md from PROJECT_ROOT. All other steps
@@ -91,8 +92,42 @@ def _get_job(job_id: str) -> dict:
 
 # ── Models ───────────────────────────────────────────────────────────────────
 
+# ── Document configuration ────────────────────────────────────────────────────
+
+# Per-document: template filename, output filenames, and UI label.
+DOCUMENT_CONFIGS: dict[str, dict] = {
+    "faq": {
+        "template": "faq.md",
+        "out_md": "out_faq.md",
+        "out_docx": "out_faq.docx",
+        "label": "Customer FAQ",
+    },
+    "checklist": {
+        "template": "fae_checklist.md",
+        "out_md": "out_fae_checklist.md",
+        "out_docx": "out_fae_checklist.docx",
+        "label": "Design-In Checklist",
+    },
+    "product_brief": {
+        "template": "product_brief.md",
+        "out_md": "out_product_brief.md",
+        "out_docx": "out_product_brief.docx",
+        "label": "Product Brief",
+    },
+}
+
+# Which doc keys each documents= value expands to.
+DOCUMENT_SETS: dict[str, list[str]] = {
+    "faq": ["faq"],
+    "checklist": ["checklist"],
+    "product_brief": ["product_brief"],
+    "both": ["faq", "checklist"],
+    "all": ["faq", "checklist", "product_brief"],
+}
+
+
 class GenerateRequest(BaseModel):
-    documents: Literal["faq", "checklist", "both"] = "both"
+    documents: Literal["faq", "checklist", "product_brief", "both", "all"] = "all"
     format: Literal["markdown", "docx", "both"] = "both"
     audience_note: str = Field(default="", max_length=200)
 
@@ -220,10 +255,9 @@ async def _generate_with_claude(
     )
 
     targets = []
-    if documents in ("faq", "both"):
-        targets.append(("faq", TEMPLATES / "faq.md", job_path / "out_faq.md"))
-    if documents in ("checklist", "both"):
-        targets.append(("checklist", TEMPLATES / "fae_checklist.md", job_path / "out_fae_checklist.md"))
+    for doc_key in DOCUMENT_SETS.get(documents, []):
+        cfg = DOCUMENT_CONFIGS[doc_key]
+        targets.append((doc_key, TEMPLATES / cfg["template"], job_path / cfg["out_md"]))
 
     for doc_type, template_path, out_path in targets:
         _jobs[job_id]["stage"] = f"generating_{doc_type}"
@@ -257,26 +291,19 @@ Fill the template above. Output only the filled document — no preamble, no exp
 
 def _copy_demo_files(job_path: Path, documents: str) -> None:
     """Demo mode: copy pre-built collateral from PROJECT_ROOT into the job directory."""
-    if documents in ("faq", "both"):
-        src = PROJECT_ROOT / "out_faq.md"
+    for doc_key in DOCUMENT_SETS.get(documents, []):
+        cfg = DOCUMENT_CONFIGS[doc_key]
+        src = PROJECT_ROOT / cfg["out_md"]
         if src.exists():
-            shutil.copy2(src, job_path / "out_faq.md")
-    if documents in ("checklist", "both"):
-        src = PROJECT_ROOT / "out_fae_checklist.md"
-        if src.exists():
-            shutil.copy2(src, job_path / "out_fae_checklist.md")
+            shutil.copy2(src, job_path / cfg["out_md"])
 
 
 def _run_verify(job_id: str, job_path: Path, documents: str) -> tuple[bool, str, list[dict]]:
     """Run verify.py and return (passed, tally, gaps)."""
     specs_path = job_path / "specs.json"
     md_files = []
-    if documents in ("faq", "both"):
-        f = job_path / "out_faq.md"
-        if f.exists():
-            md_files.append(str(f))
-    if documents in ("checklist", "both"):
-        f = job_path / "out_fae_checklist.md"
+    for doc_key in DOCUMENT_SETS.get(documents, []):
+        f = job_path / DOCUMENT_CONFIGS[doc_key]["out_md"]
         if f.exists():
             md_files.append(str(f))
 
@@ -330,11 +357,10 @@ def _run_render_docx(job_path: Path, documents: str) -> list[str]:
     render_script = SCRIPTS / "render_docx.py"
     rendered = []
 
-    pairs = []
-    if documents in ("faq", "both"):
-        pairs.append(("out_faq.md", "out_faq.docx"))
-    if documents in ("checklist", "both"):
-        pairs.append(("out_fae_checklist.md", "out_fae_checklist.docx"))
+    pairs = [
+        (DOCUMENT_CONFIGS[doc_key]["out_md"], DOCUMENT_CONFIGS[doc_key]["out_docx"])
+        for doc_key in DOCUMENT_SETS.get(documents, [])
+    ]
 
     for md_name, docx_name in pairs:
         md_path = job_path / md_name
@@ -358,11 +384,10 @@ def _parse_unverified_gaps_from_md(job_path: Path, documents: str) -> list[dict]
     """
     import re
     gaps = []
-    files_to_check = []
-    if documents in ("faq", "both"):
-        files_to_check.append(("Customer FAQ", job_path / "out_faq.md"))
-    if documents in ("checklist", "both"):
-        files_to_check.append(("Design-In Checklist", job_path / "out_fae_checklist.md"))
+    files_to_check = [
+        (DOCUMENT_CONFIGS[doc_key]["label"], job_path / DOCUMENT_CONFIGS[doc_key]["out_md"])
+        for doc_key in DOCUMENT_SETS.get(documents, [])
+    ]
 
     pattern = re.compile(r"\[UNVERIFIED\s*—\s*needs human:\s*(.*?)\]", re.IGNORECASE | re.DOTALL)
     for doc_label, path in files_to_check:
@@ -379,11 +404,16 @@ def _parse_unverified_gaps_from_md(job_path: Path, documents: str) -> list[dict]
 def _get_document_previews(job_path: Path, documents: str) -> list[dict]:
     """Return first 5 non-empty lines of each generated document for the results screen."""
     previews = []
-    pairs = []
-    if documents in ("faq", "both"):
-        pairs.append(("Customer FAQ", "ACS37002", job_path / "out_faq.md", "out_faq.md", "out_faq.docx"))
-    if documents in ("checklist", "both"):
-        pairs.append(("Design-In Checklist", "ACS37002", job_path / "out_fae_checklist.md", "out_fae_checklist.md", "out_fae_checklist.docx"))
+    pairs = [
+        (
+            DOCUMENT_CONFIGS[doc_key]["label"],
+            "ACS37002",
+            job_path / DOCUMENT_CONFIGS[doc_key]["out_md"],
+            DOCUMENT_CONFIGS[doc_key]["out_md"],
+            DOCUMENT_CONFIGS[doc_key]["out_docx"],
+        )
+        for doc_key in DOCUMENT_SETS.get(documents, [])
+    ]
 
     for label, part, md_path, md_name, docx_name in pairs:
         if not md_path.exists():
@@ -524,10 +554,10 @@ async def _run_generation(job_id: str, req: GenerateRequest) -> None:
 
         available_files: list[str] = []
 
-        if req.documents in ("faq", "both") and (job_path / "out_faq.md").exists():
-            available_files.append("out_faq.md")
-        if req.documents in ("checklist", "both") and (job_path / "out_fae_checklist.md").exists():
-            available_files.append("out_fae_checklist.md")
+        for doc_key in DOCUMENT_SETS.get(req.documents, []):
+            md_name = DOCUMENT_CONFIGS[doc_key]["out_md"]
+            if (job_path / md_name).exists():
+                available_files.append(md_name)
 
         if passed and req.format in ("docx", "both") and not DEMO_MODE:
             # Skip docx rendering in demo mode — the subprocess is too slow in
@@ -660,6 +690,24 @@ async def get_job_results(job_id: str):
         "available_files": job.get("available_files", []),
         "demo_mode": job.get("demo_mode", False),
     }
+
+
+@app.get("/api/jobs/{job_id}/preview/{filename}")
+async def preview_file(job_id: str, filename: str):
+    """Return raw markdown text for inline viewing. Only .md files."""
+    job = _get_job(job_id)
+
+    if "/" in filename or "\\" in filename or ".." in filename:
+        raise HTTPException(status_code=400, detail="Invalid filename.")
+    if not filename.endswith(".md"):
+        raise HTTPException(status_code=400, detail="Preview only available for Markdown files.")
+
+    file_path = _job_dir(job_id) / filename
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="File not found.")
+
+    from fastapi.responses import PlainTextResponse
+    return PlainTextResponse(file_path.read_text(encoding="utf-8"))
 
 
 @app.get("/api/jobs/{job_id}/download/{filename}")

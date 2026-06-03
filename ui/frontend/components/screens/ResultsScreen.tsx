@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, XCircle, Download, ChevronDown, ChevronUp, AlertTriangle } from "lucide-react";
+import { CheckCircle2, XCircle, Download, ChevronDown, ChevronUp, AlertTriangle, Eye } from "lucide-react";
 import type { JobResults, DocumentPreview, UnverifiedGap } from "@/lib/api";
 import { getDownloadUrl } from "@/lib/api";
+import { DocumentViewer } from "@/components/DocumentViewer";
 
 interface Props {
   results: JobResults;
@@ -38,11 +39,13 @@ function DocumentCard({
   jobId,
   verifyPassed,
   demoMode,
+  onView,
 }: {
   preview: DocumentPreview;
   jobId: string;
   verifyPassed: boolean;
   demoMode: boolean;
+  onView: () => void;
 }) {
   return (
     <div className="rounded-xl border border-[var(--allegro-border)] bg-white flex flex-col gap-0 overflow-hidden">
@@ -69,6 +72,18 @@ function DocumentCard({
         )}
 
         <div className="flex flex-wrap gap-2 items-center">
+          {/* View inline */}
+          {preview.md_file && (
+            <button
+              type="button"
+              onClick={onView}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--allegro-navy)] px-3.5 py-2 text-sm font-medium text-white transition-colors hover:bg-[var(--allegro-navy-light)] focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2"
+            >
+              <Eye size={14} aria-hidden="true" />
+              View
+            </button>
+          )}
+          {/* Download markdown */}
           {preview.md_file && (
             <DownloadButton
               href={getDownloadUrl(jobId, preview.md_file)}
@@ -76,6 +91,7 @@ function DocumentCard({
               type="md"
             />
           )}
+          {/* Download Word */}
           {preview.docx_file && verifyPassed && (
             <DownloadButton
               href={getDownloadUrl(jobId, preview.docx_file)}
@@ -141,9 +157,18 @@ function UnverifiedGapList({ gaps }: { gaps: UnverifiedGap[] }) {
 
 export function ResultsScreen({ results, jobId, onStartOver }: Props) {
   const { verify_passed, verify_tally, unverified_gaps, document_previews, demo_mode } = results;
+  const [viewingDoc, setViewingDoc] = useState<{ filename: string; label: string } | null>(null);
 
   return (
     <div className="flex flex-col gap-6">
+      {viewingDoc && (
+        <DocumentViewer
+          jobId={jobId}
+          filename={viewingDoc.filename}
+          label={viewingDoc.label}
+          onClose={() => setViewingDoc(null)}
+        />
+      )}
       {/* Verification badge — primary visual */}
       <div
         className={[
@@ -217,6 +242,10 @@ export function ResultsScreen({ results, jobId, onStartOver }: Props) {
               jobId={jobId}
               verifyPassed={verify_passed}
               demoMode={demo_mode}
+              onView={() =>
+                preview.md_file &&
+                setViewingDoc({ filename: preview.md_file, label: preview.label })
+              }
             />
           ))}
         </div>
