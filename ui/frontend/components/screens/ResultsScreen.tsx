@@ -37,10 +37,12 @@ function DocumentCard({
   preview,
   jobId,
   verifyPassed,
+  demoMode,
 }: {
   preview: DocumentPreview;
   jobId: string;
   verifyPassed: boolean;
+  demoMode: boolean;
 }) {
   return (
     <div className="rounded-xl border border-[var(--allegro-border)] bg-white flex flex-col gap-0 overflow-hidden">
@@ -66,7 +68,7 @@ function DocumentCard({
           </p>
         )}
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 items-center">
           {preview.md_file && (
             <DownloadButton
               href={getDownloadUrl(jobId, preview.md_file)}
@@ -74,13 +76,9 @@ function DocumentCard({
               type="md"
             />
           )}
-          {preview.docx_file && (
+          {preview.docx_file && verifyPassed && (
             <DownloadButton
-              href={
-                verifyPassed
-                  ? getDownloadUrl(jobId, preview.docx_file)
-                  : "#"
-              }
+              href={getDownloadUrl(jobId, preview.docx_file)}
               label={`Download ${preview.label} as Word document`}
               type="docx"
             />
@@ -88,6 +86,11 @@ function DocumentCard({
           {preview.docx_file && !verifyPassed && (
             <p className="text-xs text-[var(--color-muted)] self-center">
               Word unavailable until verification passes
+            </p>
+          )}
+          {!preview.docx_file && demoMode && (
+            <p className="text-xs text-[var(--color-muted)] self-center">
+              Word · available when run locally
             </p>
           )}
         </div>
@@ -213,6 +216,7 @@ export function ResultsScreen({ results, jobId, onStartOver }: Props) {
               preview={preview}
               jobId={jobId}
               verifyPassed={verify_passed}
+              demoMode={demo_mode}
             />
           ))}
         </div>
@@ -226,7 +230,7 @@ export function ResultsScreen({ results, jobId, onStartOver }: Props) {
       {/* Demo mode notice */}
       {demo_mode && (
         <p className="text-xs text-[var(--color-muted)] italic text-center border-t border-[var(--allegro-border)] pt-4">
-          Demo mode: document text is pre-generated. Extraction, verification, and Word rendering ran for real.
+          Demo mode: uses ACS37002 pre-generated specs and document text. Verification ran for real — every number above is a genuine datasheet citation.
         </p>
       )}
 
