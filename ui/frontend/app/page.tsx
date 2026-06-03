@@ -17,6 +17,7 @@ import {
   generateDocuments,
   getJobResults,
   deleteJob,
+  getAppInfo,
   type GenerateOptions,
   type SpecsSummary,
   type JobResults,
@@ -107,6 +108,11 @@ export default function Home() {
   const [jobResults, setJobResults] = useState<JobResults | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const pollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Fetch demo mode status on mount so the banner shows before any upload
+  useEffect(() => {
+    getAppInfo().then((info) => setDemoMode(info.demo_mode)).catch(() => {});
+  }, []);
 
   // ── Polling ────────────────────────────────────────────────────────────────
 
@@ -292,6 +298,22 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Demo mode banner — visible on every screen, immediately on mount */}
+      {demoMode && (
+        <div
+          className="sticky top-[57px] z-10 bg-amber-50 border-b border-amber-200"
+          role="status"
+          aria-live="polite"
+        >
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 py-2 flex items-center gap-2 flex-wrap">
+            <span className="text-amber-800 font-semibold text-xs">Demo mode</span>
+            <span className="text-amber-700 text-xs">
+              — showing pre-built ACS37002 specs. Live PDF extraction requires running locally.
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* Main content */}
       <main className="flex-1 mx-auto w-full max-w-2xl px-4 sm:px-6 py-8">
         {/* Step indicator */}
@@ -320,6 +342,7 @@ export default function Home() {
           <UploadScreen
             onUpload={handleUpload}
             isUploading={step === "uploading"}
+            demoMode={demoMode}
           />
         )}
 
@@ -330,6 +353,7 @@ export default function Home() {
             stage={jobStage}
             progress={jobProgress}
             onCancel={handleStartOver}
+            demoMode={demoMode}
           />
         )}
 
@@ -380,11 +404,6 @@ export default function Home() {
             </button>
           </div>
           <div className="flex items-center gap-3">
-            {demoMode && step !== "upload" && (
-              <span className="text-[10px] font-semibold text-[var(--color-warning-text)] bg-[var(--color-warning-bg)] border border-[var(--color-warning-border)] px-2 py-0.5 rounded-full">
-                Demo mode
-              </span>
-            )}
             <p className="text-[10px] text-[var(--color-muted)]">
               Built with ♥ by{" "}
               <span className="font-medium text-[var(--allegro-navy)]">Kishore Theeraj</span>

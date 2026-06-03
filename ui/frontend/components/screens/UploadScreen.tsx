@@ -6,9 +6,10 @@ import { Upload } from "lucide-react";
 interface Props {
   onUpload: (file: File) => void;
   isUploading?: boolean;
+  demoMode?: boolean;
 }
 
-export function UploadScreen({ onUpload, isUploading = false }: Props) {
+export function UploadScreen({ onUpload, isUploading = false, demoMode = false }: Props) {
   const [isDragging, setIsDragging] = useState(false);
   const [fileError, setFileError] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -151,21 +152,37 @@ export function UploadScreen({ onUpload, isUploading = false }: Props) {
         </button>
       )}
 
-      {/* Trust signals */}
-      <div className="rounded-xl border border-[var(--allegro-border)] bg-white px-6 py-4">
-        <ul className="flex flex-col gap-2.5">
-          {[
-            "Every number in the output is cited to the datasheet.",
-            "Anything not found is flagged for human review — never guessed.",
-            "A verification check runs before any file is available to download.",
-          ].map((text) => (
-            <li key={text} className="flex items-start gap-2.5 text-sm text-[var(--allegro-navy)]">
-              <span className="mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--allegro-orange)]" aria-hidden="true" />
-              {text}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {demoMode ? (
+        /* Demo mode: replace trust signals with an honest notice */
+        <div className="rounded-xl border border-amber-200 bg-amber-50 px-5 py-4" role="note">
+          <p className="text-sm font-semibold text-amber-800 mb-1.5">
+            Demo mode — pre-built ACS37002 results
+          </p>
+          <p className="text-xs text-amber-700 leading-relaxed">
+            Any PDF you upload will show the pre-built ACS37002 spec extraction.
+            Uploading a different datasheet won&apos;t change the output in this environment — live PDF parsing requires running locally with <code className="font-mono bg-amber-100 px-1 rounded">DEMO_MODE=false</code>.
+          </p>
+          <p className="mt-2 text-xs text-amber-700">
+            You can still walk through the full interface to see how it works.
+          </p>
+        </div>
+      ) : (
+        /* Live mode: normal trust signals */
+        <div className="rounded-xl border border-[var(--allegro-border)] bg-white px-6 py-4">
+          <ul className="flex flex-col gap-2.5">
+            {[
+              "Every number in the output is cited to the datasheet.",
+              "Anything not found is flagged for human review — never guessed.",
+              "A verification check runs before any file is available to download.",
+            ].map((text) => (
+              <li key={text} className="flex items-start gap-2.5 text-sm text-[var(--allegro-navy)]">
+                <span className="mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--allegro-orange)]" aria-hidden="true" />
+                {text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

@@ -8,8 +8,9 @@ project rules, current state, and things that must never be violated.
 ## What this project is
 
 A Claude Code skill for Allegro MicroSystems that automates the first-draft
-collateral every product launch creates: a customer FAQ and an FAE design-in
-checklist. Built as an interview prototype for the Allegro CTO (Jamie Haas).
+collateral every product launch creates: a customer FAQ, an FAE design-in
+checklist, a distributor product brief, an application note outline, and an
+internal launch brief. Built as an interview prototype for the Allegro CTO (Jamie Haas).
 
 **Interview narrative:** the ACS37017 is the new part being launched (no public
 datasheet yet). The ACS37002 is the fully published part used as the development
@@ -49,11 +50,32 @@ specs.json                 ← generated from ACS37002 (159 high-conf, 49 low-co
 
 out_faq.md                 ← generated, verify PASS (41/41 claims traced, 6 UNVERIFIED)
 out_fae_checklist.md       ← generated, verify PASS (35/35 claims traced, 9 UNVERIFIED)
+out_product_brief.md       ← generated, verify PASS (14/14 claims traced)
+out_app_note.md            ← generated, verify PASS (29/29 claims traced)
+out_launch_brief.md        ← generated, verify PASS (6/6 claims traced)
 out_faq.docx               ← rendered from out_faq.md (post-verify)
 out_fae_checklist.docx     ← rendered from out_fae_checklist.md (post-verify)
 
+examples/ACS730/
+  specs.json               ← extracted from ACS730 (114 specs, 76 high-conf)
+  out_faq.md               ← verify PASS (37/37 claims traced)
+  out_fae_checklist.md     ← verify PASS (34/34 claims traced)
+  out_faq.docx             ← rendered post-verify
+  out_fae_checklist.docx   ← rendered post-verify
+
 demo_script.md             ← 60-second live demo narration (planted-error catch)
 ```
+
+### Demo mode (Vercel deployment)
+
+The Vercel deployment runs `DEMO_MODE=true` because pdfplumber times out serverless.
+Pre-built `out_*.md` files are served instead of running live extraction + Claude generation.
+`verify.py` still runs for real — every number shown on Vercel is a genuine datasheet citation.
+To run live extraction against any Allegro current-sensor datasheet: `DEMO_MODE=false` locally.
+
+The UI surfaces this honestly: a persistent amber banner appears on every screen in demo mode,
+the upload screen states that uploaded files will show ACS37002 results, and the extraction
+screen shows "Loading pre-built specs" instead of fake progress stages.
 
 **To regenerate specs.json from scratch:**
 ```bash

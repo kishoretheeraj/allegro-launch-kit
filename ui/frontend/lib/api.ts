@@ -35,7 +35,7 @@ export interface SpecsSummary {
 }
 
 export interface GenerateOptions {
-  documents: "faq" | "checklist" | "product_brief" | "both" | "all";
+  documents: "faq" | "checklist" | "product_brief" | "both" | "all" | "app_note" | "launch_brief";
   format: "markdown" | "docx" | "both";
   audience_note: string;
 }
@@ -127,4 +127,14 @@ export async function getPreviewContent(jobId: string, filename: string): Promis
 
 export async function deleteJob(jobId: string): Promise<void> {
   await _req(`/api/jobs/${jobId}`, { method: "DELETE" });
+}
+
+export async function getAppInfo(): Promise<{ demo_mode: boolean }> {
+  try {
+    const res = await fetch(`${BASE}/api/info`);
+    if (!res.ok) return { demo_mode: false };
+    return res.json();
+  } catch {
+    return { demo_mode: false };
+  }
 }

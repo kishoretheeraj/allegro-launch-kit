@@ -1,0 +1,920 @@
+{
+  "source_pdf": "datasheets/ACS730-datasheet.pdf",
+  "spec_count": 114,
+  "high_confidence": 76,
+  "low_confidence_flagged": 38,
+  "specs": [
+    {
+      "parameter": "High bandwidth",
+      "value": "1",
+      "unit": "MHz",
+      "source_location": "p.2 / FEATURES AND BENEFITS DESCRIPTION",
+      "raw_context": "• High bandwidth 1 MHz analog output implementation by the customer. Typical applications include",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Factory-trimmed sensitivity and quiescent output voltage conduction path (from pins",
+      "value": "1",
+      "unit": "a",
+      "source_location": "p.2 / FEATURES AND BENEFITS DESCRIPTION",
+      "raw_context": "• Factory-trimmed sensitivity and quiescent output voltage conduction path (from pins 1 and 2, to pins 3 and 4), which is",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sensitivity [1], Sens(Typ)",
+      "value": "100",
+      "unit": "mV/A",
+      "source_location": "p.3 / table 1",
+      "raw_context": "ACS730KLCTR-20AB-S | ±20 | 100 | –40 to 125 | Tape and reel, 3000 pieces per reel",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity [1], Sens(Typ)",
+      "value": "66",
+      "unit": "mV/A",
+      "source_location": "p.3 / table 1",
+      "raw_context": "ACS730KLCTR-30AB-S | ±30 | 66 |  | ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity [1], Sens(Typ)",
+      "value": "120",
+      "unit": "mV/A",
+      "source_location": "p.3 / table 1",
+      "raw_context": "ACS730KLCTR-30AU-S | 30 | 120 |  | ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity [1], Sens(Typ)",
+      "value": "50",
+      "unit": "mV/A",
+      "source_location": "p.3 / table 1",
+      "raw_context": "ACS730KLCTR-40AB-S | ±40 | 50 |  | ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity [1], Sens(Typ)",
+      "value": "40",
+      "unit": "mV/A",
+      "source_location": "p.3 / table 1",
+      "raw_context": "ACS730KLCTR-50AB-S | ±50 | 40 |  | ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity [1], Sens(Typ)",
+      "value": "30",
+      "unit": "mV/A",
+      "source_location": "p.3 / table 1",
+      "raw_context": "ACS730KLCTR-65AB-S | ±65 | 30 |  | ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Voltage",
+      "value": "6",
+      "unit": "V",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Supply Voltage | V CC |  | 6 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reverse Supply Voltage",
+      "value": "-0.1",
+      "unit": "V",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Reverse Supply Voltage | V CC(R) |  | –0.1 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero Current Reference Voltage",
+      "value": "20",
+      "unit": "V",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Zero Current Reference Voltage | V ZCR |  | 20 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reverse Zero Current Reference Voltage",
+      "value": "-0.1",
+      "unit": "V",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Reverse Zero Current Reference Voltage | V ZCR(R) |  | –0.1 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Operating Ambient Temperature",
+      "value": "125",
+      "unit": "°C",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Operating Ambient Temperature | T A | Range K | –40 to 125 | °C",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Junction Temperature",
+      "value": "165",
+      "unit": "°C",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Junction Temperature | T(max) J |  | 165 | °C",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Storage Temperature",
+      "value": "170",
+      "unit": "°C",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Storage Temperature | T stg |  | –65 to 170 | °C",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Working Voltage for Basic Isolation [2]",
+      "value": "420",
+      "unit": "V or VDC PK",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Working Voltage for Basic Isolation [2] | V WVBI | Maximum approved working voltage for basic (single) isolation according to UL 62368-1 (edition 3) | 420 | V or VDC PK",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Working Voltage for Basic Isolation [2]",
+      "value": "297",
+      "unit": "V RMS",
+      "source_location": "p.4 / table 2",
+      "raw_context": " |  |  | 297 | V RMS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reverse Supply Voltage V –",
+      "value": "0.1",
+      "unit": "V",
+      "source_location": "p.4 / ABSOLUTE MAXIMUM RATINGS",
+      "raw_context": "Reverse Supply Voltage V –0.1 V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Reverse Zero Current Reference Voltage V –",
+      "value": "0.1",
+      "unit": "V",
+      "source_location": "p.4 / ABSOLUTE MAXIMUM RATINGS",
+      "raw_context": "Reverse Zero Current Reference Voltage V –0.1 V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Working Voltage for Basic Isolation [2] V Maximum approved working voltage for basic (single) isolation",
+      "value": "420",
+      "unit": "V",
+      "source_location": "p.4 / ABSOLUTE MAXIMUM RATINGS",
+      "raw_context": "Working Voltage for Basic Isolation [2] V Maximum approved working voltage for basic (single) isolation 420 V PK or VDC",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Creepage D Minimum distance along package body from IP leads to signal leads",
+      "value": "4",
+      "unit": "mm",
+      "source_location": "p.4 / ABSOLUTE MAXIMUM RATINGS",
+      "raw_context": "Creepage D Minimum distance along package body from IP leads to signal leads 4 mm",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Package LC, 8-Pin SOICN",
+      "value": "6",
+      "unit": "V",
+      "source_location": "p.5",
+      "raw_context": "Package LC, 8-Pin SOICN 6 VZCR Zero current reference; outputs a DC voltage equal to",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Supply Voltage",
+      "value": "5",
+      "unit": "V",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Supply Voltage | V CC |  | 4.5 | 5 | 5.5 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Current",
+      "value": "17",
+      "unit": "mA",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Supply Current | I CC | V = 5 V, output open CC | – | 17 | 25 | mA",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Capacitance Load",
+      "value": "1",
+      "unit": "nF",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Reference Capacitance Load | C VZCR | VZCR to GND | – | – | 1 | nF",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Resistive Load",
+      "value": "10",
+      "unit": "kΩ",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Reference Resistive Load | R VZCR | VZCR to GND, VZCR to VCC | 10 | – | – | kΩ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Output Low Saturation Voltage [2]",
+      "value": "0.1",
+      "unit": "V",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Output Low Saturation Voltage [2] | V OL | VIOUT, T = 25°C A | – | 0.1 | 0.2 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Primary Conductor Resistance",
+      "value": "1.2",
+      "unit": "mΩ",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Primary Conductor Resistance | R IP | T = 25°C A | – | 1.2 | – | mΩ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Rise Time",
+      "value": "0.6",
+      "unit": "μs",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Rise Time | t r | T = 25°C, C = 0.47 nF A L | – | 0.6 | – | μs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Response Time",
+      "value": "0.7",
+      "unit": "μs",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Response Time | t RESPONSE | T = 25°C, C = 0.47 nF A L | – | 0.7 | – | μs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Output Slew Rate",
+      "value": "2.67",
+      "unit": "V/µs",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Output Slew Rate | SR | T = 25°C, C = 1 nF A L | – | 2.67 | – | V/µs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Internal Bandwidth",
+      "value": "1",
+      "unit": "MHz",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Internal Bandwidth | BW | Small signal –3 dB; C = 0.47 nF L | – | 1 | – | MHz",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise Density",
+      "value": "40",
+      "unit": "µA / √(Hz)",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Noise Density | I ND | Input-referenced noise density; T = 25°C, C = 0.47 nF A L | – | 40 | – | µA / √(Hz)",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise",
+      "value": "40",
+      "unit": "mA RMS",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Noise | I N | Input-referenced noise; T = 25°C, C = 0.47 nF A L | – | 40 | – | mA RMS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Power Supply Rejection Ratio",
+      "value": "15",
+      "unit": "dB",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Sensitivity Power Supply Rejection Ratio | SPSRR | DC, V (min) < V < V (max), CC CC CC I = I (max) P PR | – | 15 | – | dB",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Power Supply Rejection Ratio",
+      "value": "30",
+      "unit": "dB",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Offset Power Supply Rejection Ratio | OPSRR | DC, V (min) < V < V (max) CC CC CC | – | 30 | – | dB",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero Current Reference Offset Voltage",
+      "value": "3",
+      "unit": "mV",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Zero Current Reference Offset Voltage | V ZCR(ofs) | T = 25°C A | –10 | ±3 | 10 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero Current Reference Offset Voltage",
+      "value": "10",
+      "unit": "mV",
+      "source_location": "p.6 / table 1",
+      "raw_context": " |  | T = 25°C to 125°C A | –20 | ±10 | 20 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Source Current",
+      "value": "2",
+      "unit": "mA",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Reference Source Current | I VZCR(src) | VZCR shorted to GND | – | 2 | – | mA",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Sink Current",
+      "value": "14",
+      "unit": "mA",
+      "source_location": "p.6 / table 1",
+      "raw_context": "Reference Sink Current | I VZCR(snk) | VZCR shored to VCC | – | 14 | – | mA",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Voltage V 4.5 5",
+      "value": "5.5",
+      "unit": "V",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Supply Voltage V 4.5 5 5.5 V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Supply Current I V =",
+      "value": "5",
+      "unit": "V",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Supply Current I V = 5 V, output open – 17 25 mA",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Output High Saturation Voltage [2] V VIOUT, T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Output High Saturation Voltage [2] V VIOUT, T = 25°C V – 0.4 V – 0.3 – V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Output Low Saturation Voltage [2] V VIOUT, T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Output Low Saturation Voltage [2] V VIOUT, T = 25°C – 0.1 0.2 V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Primary Conductor Resistance R T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Primary Conductor Resistance R T = 25°C – 1.2 – mΩ",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Rise Time t T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Rise Time t T = 25°C, C = 0.47 nF – 0.6 – μs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Response Time t T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Response Time t T = 25°C, C = 0.47 nF – 0.7 – μs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Output Slew Rate SR T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Output Slew Rate SR T = 25°C, C = 1 nF – 2.67 – V/µs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Internal Bandwidth BW Small signal –",
+      "value": "3",
+      "unit": "dB",
+      "source_location": "p.6 / COMMON ELECTRICAL CHARACTERISTICS [1]: Valid over full range of T , V = 5 V, unless otherwise specified",
+      "raw_context": "Internal Bandwidth BW Small signal –3 dB; C = 0.47 nF – 1 – MHz",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Zero Current Reference Voltage V T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.7 / xKLCTR-20AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Zero Current Reference Voltage V T = 25°C – 2.5 – V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "20",
+      "unit": "A",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Current Sensing Range | I PR |  | –20 | – | 20 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "100",
+      "unit": "mV/A",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Sensitivity | Sens |  | – | 100 | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero Current Reference Voltage",
+      "value": "2.5",
+      "unit": "V",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Zero Current Reference Voltage | V ZCR | T = 25°C A | – | 2.5 | – | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error [2]",
+      "value": "3",
+      "unit": "%",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Total Output Error [2] | E TOT | I = I ; T = 25°C to 125°C P P(MAX) A | –4 | ±3 | 4 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error [2]",
+      "value": "4",
+      "unit": "%",
+      "source_location": "p.7 / table 1",
+      "raw_context": " |  | I = I ; T = –40°C to 25°C P P(MAX) A | – | ±4 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "1.5",
+      "unit": "%",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Sensitivity Error | E sens | I = I ; T = 25°C to 125°C P P(MAX) A | –2.5 | ±1.5 | 2.5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "4",
+      "unit": "%",
+      "source_location": "p.7 / table 1",
+      "raw_context": " |  | I = I ; T = –40°C to 25°C P P(MAX) A | – | ±4 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "50",
+      "unit": "mV",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Offset Voltage | V OE | I = 0 A; T = 25°C to 125°C P A | –75 | ±50 | 75 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Nonlinearity",
+      "value": "0.75",
+      "unit": "%",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Nonlinearity | E LIN | Through the full range of I ; T = 25°C to 125°C P A | –2 | ±0.75 | 2 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error Including Lifetime Drift",
+      "value": "6.7",
+      "unit": "%",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Total Output Error Including Lifetime Drift | E tot_drift | I = 20 A P | – | ±6.7 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift",
+      "value": "3.8",
+      "unit": "%",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Sensitivity Error Including Lifetime Drift | E sens_drift | I = 20 A P | – | ±3.8 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage Including Lifetime Drift",
+      "value": "118",
+      "unit": "mV",
+      "source_location": "p.7 / table 1",
+      "raw_context": "Offset Voltage Including Lifetime Drift | V off_drift | I = 0 A P | – | ±118 | – | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error Including Lifetime Drift E I =",
+      "value": "20",
+      "unit": "A",
+      "source_location": "p.7 / xKLCTR-20AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Total Output Error Including Lifetime Drift E I = 20 A – ±6.7 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift E I =",
+      "value": "20",
+      "unit": "A",
+      "source_location": "p.7 / xKLCTR-20AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Sensitivity Error Including Lifetime Drift E I = 20 A – ±3.8 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Offset Voltage Including Lifetime Drift V I =",
+      "value": "0",
+      "unit": "A",
+      "source_location": "p.7 / xKLCTR-20AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Offset Voltage Including Lifetime Drift V I = 0 A – ±118 – mV",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "30",
+      "unit": "A",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Current Sensing Range | I PR |  | –30 | – | 30 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "66",
+      "unit": "mV/A",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Sensitivity | Sens |  | – | 66 | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error [2]",
+      "value": "5",
+      "unit": "%",
+      "source_location": "p.8 / table 1",
+      "raw_context": " |  | I = I ; T = –40°C to 25°C P P(MAX) A | – | ±5 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "2.5",
+      "unit": "%",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Sensitivity Error | E sens | I = I ; T = 25°C to 125°C P P(MAX) A | –3.5 | ±2.5 | 3.5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "5",
+      "unit": "%",
+      "source_location": "p.8 / table 1",
+      "raw_context": " |  | I = I ; T = –40°C to 25°C P P(MAX) A | – | ±5 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "20",
+      "unit": "mV",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Offset Voltage | V OE | I = 0 A; T = 25°C to 125°C P A | –40 | ±20 | 40 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "30",
+      "unit": "mV",
+      "source_location": "p.8 / table 1",
+      "raw_context": " |  | I = 0 A; T = –40°C to 25°C P A | – | ±30 | – | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error Including Lifetime Drift E I =",
+      "value": "40",
+      "unit": "A",
+      "source_location": "p.8 / xKLCTR-30AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Total Output Error Including Lifetime Drift E I = 40 A – ±6.7 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "120",
+      "unit": "mV/A",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Sensitivity | Sens |  | – | 120 | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero Current Reference Voltage",
+      "value": "0.5",
+      "unit": "V",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Zero Current Reference Voltage | V ZCR | T = 25°C A | – | 0.5 | – | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error [2]",
+      "value": "2.6",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Total Output Error [2] | E TOT | I = I ; T = 25°C to 125°C P P(MAX) A | –5 | ±2.6 | 5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error [2]",
+      "value": "3.7",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  | I = I ; T = –40°C to 25°C P P(MAX) A | – | ±3.7 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "1.2",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Sensitivity Error | E sens | I = I ; T = 25°C to 125°C P P(MAX) A | –3.5 | ±1.2 | 3.5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "3.7",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  | I = I ; T = –40°C to 25°C P P(MAX) A | – | ±3.7 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "35",
+      "unit": "mV",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Offset Voltage | V OE | I = 0 A; T = 25°C to 125°C P A | –40 | ±35 | 40 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "38",
+      "unit": "mV",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  | I = 0 A; T = –40°C to 25°C P A | – | ±38 | – | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Nonlinearity",
+      "value": "1",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Nonlinearity | E LIN | Through the full range of I ; T = 25°C to 125°C P A | –2 | ±1 | 2 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Nonlinearity",
+      "value": "2.3",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  | Through the full range of I ; T = –40°C to 25°C P A | – | ±2.3 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "40",
+      "unit": "A",
+      "source_location": "p.10 / table 1",
+      "raw_context": "Current Sensing Range | I PR |  | –40 | – | 40 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "50",
+      "unit": "mV/A",
+      "source_location": "p.10 / table 1",
+      "raw_context": "Sensitivity | Sens |  | – | 50 | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "50",
+      "unit": "A",
+      "source_location": "p.12 / table 1",
+      "raw_context": "Current Sensing Range | I PR |  | –50 | – | 50 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "40",
+      "unit": "mV/A",
+      "source_location": "p.12 / table 1",
+      "raw_context": "Sensitivity | Sens |  | – | 40 | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "3",
+      "unit": "%",
+      "source_location": "p.12 / table 1",
+      "raw_context": "Sensitivity Error | E sens | I = I ; T = 25°C to 125°C P P(MAX) A | –3.5 | ±3 | 3.5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error Including Lifetime Drift E I =",
+      "value": "50",
+      "unit": "A",
+      "source_location": "p.12 / xKLCTR-50AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Total Output Error Including Lifetime Drift E I = 50 A – ±6.7 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift E I =",
+      "value": "25",
+      "unit": "A",
+      "source_location": "p.12 / xKLCTR-50AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Sensitivity Error Including Lifetime Drift E I = 25 A – ±3.8 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "65",
+      "unit": "A",
+      "source_location": "p.13 / table 1",
+      "raw_context": "Current Sensing Range | I PR |  | –65 | – | 65 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "30",
+      "unit": "mV/A",
+      "source_location": "p.13 / table 1",
+      "raw_context": "Sensitivity | Sens |  | – | 30 | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error Including Lifetime Drift E I =",
+      "value": "65",
+      "unit": "A",
+      "source_location": "p.13 / xKLCTR-65AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Total Output Error Including Lifetime Drift E I = 65 A – ±6.7 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift E I =",
+      "value": "32",
+      "unit": "A",
+      "source_location": "p.13 / xKLCTR-65AB PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Sensitivity Error Including Lifetime Drift E I = 32 A – ±3.8 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "80",
+      "unit": "A",
+      "source_location": "p.14 / table 1",
+      "raw_context": "Current Sensing Range | I PR |  | 0 | – | 80 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error [2]",
+      "value": "1.8",
+      "unit": "%",
+      "source_location": "p.14 / table 1",
+      "raw_context": "Total Output Error [2] | E TOT | I = I ; T = 25°C to 125°C P P(MAX) A | –5 | ±1.8 | 5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "4.2",
+      "unit": "%",
+      "source_location": "p.14 / table 1",
+      "raw_context": " |  | I = I ; T = –40°C to 25°C P P(MAX) A | – | ±4.2 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "21",
+      "unit": "mV",
+      "source_location": "p.14 / table 1",
+      "raw_context": "Offset Voltage | V OE | I = 0 A; T = 25°C to 125°C P A | –40 | ±21 | 40 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "27",
+      "unit": "mV",
+      "source_location": "p.14 / table 1",
+      "raw_context": " |  | I = 0 A; T = –40°C to 25°C P A | – | ±27 | – | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Nonlinearity",
+      "value": "0.3",
+      "unit": "%",
+      "source_location": "p.14 / table 1",
+      "raw_context": "Nonlinearity | E LIN | Through the full range of I ; T = 25°C to 125°C P A | –2 | ±0.3 | 2 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Output Error Including Lifetime Drift E I =",
+      "value": "80",
+      "unit": "A",
+      "source_location": "p.14 / xKLCTR-80AU PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Total Output Error Including Lifetime Drift E I = 80 A – ±6.7 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift E I =",
+      "value": "40",
+      "unit": "A",
+      "source_location": "p.14 / xKLCTR-80AU PERFORMANCE CHARACTERISTICS: Valid over full range of T , V = 5 V, C = 0.1 µF, unless otherwise specified",
+      "raw_context": "Sensitivity Error Including Lifetime Drift E I = 40 A – ±3.8 – %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Applied current step with 10%-90% rise time =",
+      "value": "1",
+      "unit": "μs",
+      "source_location": "p.22",
+      "raw_context": "Applied current step with 10%-90% rise time = 1 μs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Allegro linear IC quiescent voltage trim and thermal drift",
+      "value": "0",
+      "unit": "A",
+      "source_location": "p.24",
+      "raw_context": "Allegro linear IC quiescent voltage trim and thermal drift. 0 A",
+      "confidence": "low"
+    },
+    {
+      "parameter": "its ideal quiescent value of",
+      "value": "2.5",
+      "unit": "V",
+      "source_location": "p.24",
+      "raw_context": "its ideal quiescent value of 2.5 V due to nonmagnetic causes. To 25°C Only",
+      "confidence": "low"
+    },
+    {
+      "parameter": "versus I at",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.24",
+      "raw_context": "versus I at 25°C and across temperature. Figure 2 shows the cor-",
+      "confidence": "low"
+    },
+    {
+      "parameter": "the percent change in sensitivity from the sensitivity at",
+      "value": "5",
+      "unit": "V",
+      "source_location": "p.25",
+      "raw_context": "the percent change in sensitivity from the sensitivity at 5 V to the",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Error",
+      "value": "5",
+      "unit": "mV",
+      "source_location": "p.26 / table 1",
+      "raw_context": "0.5 | 0.05 | 5 | 2.5 | 2",
+      "confidence": "high"
+    },
+    {
+      "parameter": "sensitivity of",
+      "value": "100",
+      "unit": "mV/A",
+      "source_location": "p.26 / The ACS730 works by sensing the magnetic field created by the The Performance Characteristics tables give distribution values",
+      "raw_context": "sensitivity of 100 mV/A, is being used, that equates to 10 mV of Using these equations and the 3 sigma distributions for Sensitiv-",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Figure 3: Predicted Total Error as a Function of the Sensed Current for the ACS730KLCTR",
+      "value": "-20",
+      "unit": "A",
+      "source_location": "p.26 / The ACS730 works by sensing the magnetic field created by the The Performance Characteristics tables give distribution values",
+      "raw_context": "Figure 3: Predicted Total Error as a Function of the Sensed Current for the ACS730KLCTR-20AB",
+      "confidence": "low"
+    },
+    {
+      "parameter": "temperature of the ACS",
+      "value": "730",
+      "unit": "v",
+      "source_location": "p.27",
+      "raw_context": "temperature of the ACS730 versus continuous current at an ambi-",
+      "confidence": "low"
+    },
+    {
+      "parameter": "ent temperature, T , of",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.27",
+      "raw_context": "ent temperature, T , of 25 °C. The thermal offset curves may be",
+      "confidence": "low"
+    },
+    {
+      "parameter": "reference Allegro DWG-0000385, Rev. 2 or JEDEC MS",
+      "value": "-012",
+      "unit": "A",
+      "source_location": "p.28",
+      "raw_context": "(reference Allegro DWG-0000385, Rev. 2 or JEDEC MS-012AA)",
+      "confidence": "low"
+    },
+    {
+      "parameter": "June 14,",
+      "value": "2024",
+      "unit": "A",
+      "source_location": "p.29 / Characteristics to Performance Characteristics tables (pages 6-13); updated Typical Frequency",
+      "raw_context": "13 June 14, 2024 Added part “-40AU” variants (page 2, 10); corrected Isolation Characteristics table (page 3)",
+      "confidence": "low"
+    }
+  ]
+}

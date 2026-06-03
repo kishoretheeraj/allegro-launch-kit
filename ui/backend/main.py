@@ -114,6 +114,18 @@ DOCUMENT_CONFIGS: dict[str, dict] = {
         "out_docx": "out_product_brief.docx",
         "label": "Product Brief",
     },
+    "app_note": {
+        "template": "app_note.md",
+        "out_md": "out_app_note.md",
+        "out_docx": "out_app_note.docx",
+        "label": "Application Note Outline",
+    },
+    "launch_brief": {
+        "template": "launch_brief.md",
+        "out_md": "out_launch_brief.md",
+        "out_docx": "out_launch_brief.docx",
+        "label": "Internal Launch Brief",
+    },
 }
 
 # Which doc keys each documents= value expands to.
@@ -123,11 +135,16 @@ DOCUMENT_SETS: dict[str, list[str]] = {
     "product_brief": ["product_brief"],
     "both": ["faq", "checklist"],
     "all": ["faq", "checklist", "product_brief"],
+    "app_note": ["app_note"],
+    "launch_brief": ["launch_brief"],
 }
 
 
 class GenerateRequest(BaseModel):
-    documents: Literal["faq", "checklist", "product_brief", "both", "all"] = "all"
+    documents: Literal[
+        "faq", "checklist", "product_brief", "both", "all",
+        "app_note", "launch_brief",
+    ] = "all"
     format: Literal["markdown", "docx", "both"] = "both"
     audience_note: str = Field(default="", max_length=200)
 
@@ -586,6 +603,12 @@ async def _run_generation(job_id: str, req: GenerateRequest) -> None:
 
 
 # ── Routes ───────────────────────────────────────────────────────────────────
+
+@app.get("/api/info")
+async def get_info():
+    """Return static deployment metadata. Fetched on mount to surface demo mode immediately."""
+    return {"demo_mode": DEMO_MODE}
+
 
 @app.post("/api/upload")
 async def upload_pdf(file: UploadFile = File(...)):

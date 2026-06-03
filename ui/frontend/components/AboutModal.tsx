@@ -89,6 +89,25 @@ export function AboutModal({ onClose }: Props) {
           </section>
 
           <section>
+            <h3 className="font-semibold mb-1.5">Demo mode (Vercel deployment)</h3>
+            <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-700 leading-relaxed">
+              <p>
+                The public Vercel deployment runs in <strong className="text-amber-800">demo mode</strong> because
+                pdfplumber requires &gt;270 s on serverless — Vercel&apos;s function timeout.
+                Pre-built ACS37002 outputs are served instead of running live extraction and generation.
+              </p>
+              <p className="mt-2">
+                <strong className="text-amber-800">What still runs for real:</strong> verification (verify.py) —
+                every number shown is a genuine datasheet citation, not a mock.
+              </p>
+              <p className="mt-2">
+                To run live extraction against any Allegro current-sensor datasheet, clone the repo and start the
+                backend with <code className="font-mono bg-amber-100 px-1 rounded">DEMO_MODE=false</code>.
+              </p>
+            </div>
+          </section>
+
+          <section>
             <h3 className="font-semibold mb-2">Known limitations</h3>
             <table className="w-full text-xs text-[var(--color-muted)] border-collapse">
               <thead>

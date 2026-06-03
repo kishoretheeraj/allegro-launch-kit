@@ -10,7 +10,7 @@ interface Props {
   isGenerating?: boolean;
 }
 
-type DocOption = "faq" | "checklist" | "product_brief" | "both" | "all";
+type DocOption = "faq" | "checklist" | "product_brief" | "both" | "all" | "app_note" | "launch_brief";
 type FormatOption = "markdown" | "docx" | "both";
 
 // Team → documents mapping
@@ -30,10 +30,20 @@ const TEAM_MAP: Record<string, { documents: DocOption; label: string; descriptio
     label: "Sales / Distribution",
     description: "Product brief — one-page spec summary for distributors and reps",
   },
+  apps: {
+    documents: "app_note",
+    label: "Applications Engineering",
+    description: "Application note outline — circuit config, cited specs, lab-data gaps flagged",
+  },
+  cross_team: {
+    documents: "launch_brief",
+    label: "Cross-Functional Launch Team",
+    description: "Internal launch brief — what shipped, key specs, who-to-call (contacts as [UNVERIFIED])",
+  },
   launch: {
     documents: "all",
     label: "Full Product Launch",
-    description: "All three documents — FAQ, checklist, and product brief (recommended)",
+    description: "All three external documents — FAQ, checklist, and product brief (recommended)",
   },
 };
 
@@ -137,6 +147,11 @@ export function OptionsScreen({ onGenerate, onBack, isGenerating = false }: Prop
           ))}
         </div>
 
+        {/* Competitive comparison notice */}
+        <p className="mt-3 text-xs text-[var(--color-muted)] bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">
+          Competitive comparison is not generated — add manually to your document if needed.
+        </p>
+
         {/* Advanced: custom document selection */}
         <button
           type="button"
@@ -154,8 +169,10 @@ export function OptionsScreen({ onGenerate, onBack, isGenerating = false }: Prop
               ["faq", "Customer FAQ", "answers customers and distributors ask"],
               ["checklist", "Design-in Checklist", "for field engineers reviewing a design"],
               ["product_brief", "Product Brief", "one-page summary for sales and distribution"],
+              ["app_note", "Application Note Outline", "section skeleton with cited specs, lab-data gaps flagged"],
+              ["launch_brief", "Internal Launch Brief", "who shipped what, key specs, cross-team contacts as [UNVERIFIED]"],
               ["both", "FAQ + Checklist", "standard two-doc set"],
-              ["all", "All three documents", "FAQ, checklist, and product brief"],
+              ["all", "All three external docs", "FAQ, checklist, and product brief"],
             ] as [DocOption, string, string][]).map(([val, label, desc]) => (
               <ChoiceButton
                 key={val}

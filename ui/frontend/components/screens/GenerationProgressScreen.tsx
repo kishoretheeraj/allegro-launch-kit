@@ -80,8 +80,8 @@ export function GenerationProgressScreen({ stage, demoMode = false }: Props) {
       </div>
 
       {demoMode && (
-        <p className="text-xs text-[var(--color-muted)] italic border-t border-[var(--allegro-border)] pt-4">
-          Running in demo mode — document text is pre-generated. Extraction, verification, and Word rendering run for real.
+        <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+          Demo mode — document text is pre-built for ACS37002. Verification and Word rendering run for real.
         </p>
       )}
     </div>
