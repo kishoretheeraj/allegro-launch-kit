@@ -77,7 +77,8 @@ async function _req<T>(path: string, init?: RequestInit): Promise<T> {
     let detail = `HTTP ${res.status}`;
     try {
       const body = await res.json();
-      detail = body.detail ?? detail;
+      const raw = body.detail ?? body.message ?? detail;
+      detail = typeof raw === "string" ? raw : JSON.stringify(raw);
     } catch {
       // ignore parse error
     }
