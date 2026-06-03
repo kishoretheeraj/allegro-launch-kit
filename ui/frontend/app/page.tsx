@@ -32,23 +32,42 @@ type Step =
   | "complete"         // Screen 6: download
   | "error";
 
-// ── Allegro MicroSystems brand mark ──────────────────────────────────────────
+// ── Allegro MicroSystems dot-matrix mark ─────────────────────────────────────
+// Approximates the real Allegro logo mark: a circle of colorful dots arranged
+// in a rainbow spectrum (warm reds/oranges top-left → blues/teals bottom-right)
 function AllegroMark() {
+  // 7 columns × 6 rows of colored squares, clipped to an ellipse
+  const cols = [2, 9, 16, 23, 30, 37, 44];
+  const rows = [2, 9, 16, 23, 30, 37];
+  const palette: string[][] = [
+    ["#E8002D","#EE2200","#FF5500","#FF8800","#FFCC00","#BBDD00","#77BB00"],
+    ["#CC0055","#EE0033","#FF4400","#FF7700","#FFAA00","#99CC00","#44AA22"],
+    ["#990099","#BB0077","#DD0044","#FF5533","#FFA833","#66BB00","#00AA44"],
+    ["#6600CC","#8800BB","#AA0088","#CC0066","#EE4422","#00AABB","#00BB77"],
+    ["#3300DD","#5500CC","#7700BB","#9900AA","#BB2299","#00AACC","#00CC99"],
+    ["#0044EE","#2222DD","#4400CC","#6600BB","#880099","#00BBDD","#00DDBB"],
+  ];
+
   return (
-    <svg
-      width="38"
-      height="38"
-      viewBox="0 0 38 38"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <rect width="38" height="38" rx="5" fill="#F26524" />
-      {/* Stylised italic "a" — approximates the Allegro brand glyph */}
-      <path
-        d="M23.5 11.5C21.8 10.5 19.8 10 17.5 10C14.5 10 12 11 10.2 12.8C8.4 14.6 7.5 17 7.5 20C7.5 22.8 8.4 25 10.2 26.6C12 28.2 14.4 29 17.5 29C19.5 29 21.2 28.6 22.8 27.8V29H27V11H23.5V11.5ZM23.5 24.5C22.2 25.6 20.5 26.2 18.5 26.2C16.5 26.2 14.8 25.6 13.6 24.3C12.4 23 11.8 21.3 11.8 19.2C11.8 17.1 12.4 15.4 13.6 14.2C14.8 13 16.4 12.3 18.4 12.3C20.3 12.3 22 13 23.5 14.4V24.5Z"
-        fill="white"
-      />
+    <svg width="52" height="44" viewBox="0 0 52 44" aria-hidden="true">
+      <defs>
+        <clipPath id="allegro-dot-clip">
+          <ellipse cx="26" cy="22" rx="23" ry="20" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#allegro-dot-clip)">
+        {rows.map((y, r) =>
+          cols.map((x, c) => (
+            <rect
+              key={`${r}-${c}`}
+              x={x} y={y}
+              width="5" height="5"
+              rx="0.8"
+              fill={palette[r][c]}
+            />
+          ))
+        )}
+      </g>
     </svg>
   );
 }
@@ -233,44 +252,40 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Allegro MicroSystems site nav bar */}
-      <div className="bg-[var(--allegro-navy)]">
+      {/* Allegro MicroSystems site header — white background matching allegromicro.com */}
+      <header className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between">
+          {/* Brand: colorful dot mark + wordmark */}
           <div className="flex items-center gap-3">
             <AllegroMark />
             <div className="leading-none">
-              <div className="text-white font-bold text-lg tracking-tight leading-none">
-                allegro
+              <div className="font-black text-[20px] text-[#003F7F] tracking-wide leading-none uppercase">
+                ALLEGRO
               </div>
-              <div className="text-white/60 text-[10px] tracking-[0.18em] uppercase font-medium leading-none mt-0.5">
+              <div className="text-[#F26524] text-[11px] font-medium leading-none mt-0.5 tracking-[0.04em]">
                 microsystems
               </div>
             </div>
-            <div className="w-px h-7 bg-white/20 mx-2 hidden sm:block" aria-hidden="true" />
-            <span className="hidden sm:inline text-[var(--allegro-orange)] text-sm font-semibold">
+            <div className="h-8 w-px bg-gray-200 mx-3 hidden sm:block" aria-hidden="true" />
+            <span className="text-sm font-semibold text-[#F26524] hidden sm:inline">
               Launch Kit
             </span>
           </div>
-          <span className="text-white/40 text-xs hidden sm:inline">Internal Tools</span>
-        </div>
-      </div>
-
-      {/* App header */}
-      <header className="sticky top-0 z-10 bg-white border-b border-[var(--allegro-border)] shadow-sm">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 py-3 flex items-center justify-between">
-          <span className="text-sm font-semibold text-[var(--allegro-navy)]">
-            Launch Kit
-            <span className="ml-2 text-xs font-normal text-[var(--color-muted)]">· datasheet → verified collateral</span>
-          </span>
-          {step !== "upload" && step !== "uploading" && (
-            <button
-              type="button"
-              onClick={handleStartOver}
-              className="text-xs text-[var(--color-muted)] hover:text-[var(--allegro-navy)] underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2 rounded"
-            >
-              Start over
-            </button>
-          )}
+          {/* Right: context + controls */}
+          <div className="flex items-center gap-4">
+            <span className="text-[11px] text-gray-400 hidden md:inline tracking-wide uppercase font-medium">
+              Internal Tools
+            </span>
+            {step !== "upload" && step !== "uploading" && (
+              <button
+                type="button"
+                onClick={handleStartOver}
+                className="text-xs text-gray-400 hover:text-[#003F7F] underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2 rounded"
+              >
+                Start over
+              </button>
+            )}
+          </div>
         </div>
       </header>
 
