@@ -529,7 +529,10 @@ async def _run_generation(job_id: str, req: GenerateRequest) -> None:
         if req.documents in ("checklist", "both") and (job_path / "out_fae_checklist.md").exists():
             available_files.append("out_fae_checklist.md")
 
-        if passed and req.format in ("docx", "both"):
+        if passed and req.format in ("docx", "both") and not DEMO_MODE:
+            # Skip docx rendering in demo mode — the subprocess is too slow in
+            # constrained serverless environments. .md files are always available.
+            # Run locally with DEMO_MODE=false for .docx output.
             job["stage"] = "rendering_docx"
             job["progress"] = 80
             rendered = await loop.run_in_executor(
