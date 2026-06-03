@@ -432,7 +432,7 @@ async def _run_extraction(job_id: str, pdf_path: Path) -> None:
             None,
             lambda: _run(
                 [sys.executable, str(extract_script), str(pdf_path), "-o", str(specs_path)],
-                timeout=180,
+                timeout=270,
             ),
         )
 
