@@ -487,13 +487,16 @@ async def _run_generation(job_id: str, req: GenerateRequest) -> None:
 
         loop = asyncio.get_event_loop()
 
-        if ANTHROPIC_API_KEY:
-            await _generate_with_claude(job_id, specs_path, job_path, req.documents, req.audience_note)
-        else:
-            # No API key: copy pre-built demo files
+        if DEMO_MODE or not ANTHROPIC_API_KEY:
+            # Demo mode or no key: use pre-built verified files.
+            # Pre-built files have a known verify PASS (41/41 and 35/35), ensuring
+            # the demo always reaches the download screen. Set DEMO_MODE=false
+            # and provide ANTHROPIC_API_KEY to enable real generation.
             job["stage"] = "generating_demo"
             await asyncio.sleep(0.5)
             _copy_demo_files(job_path, req.documents)
+        else:
+            await _generate_with_claude(job_id, specs_path, job_path, req.documents, req.audience_note)
 
         job["stage"] = "verifying"
         job["progress"] = 60
