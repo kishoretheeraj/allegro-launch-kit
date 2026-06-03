@@ -1,0 +1,72 @@
+{
+  "source_pdf": "test_datasheet.pdf",
+  "spec_count": 8,
+  "high_confidence": 8,
+  "low_confidence_flagged": 0,
+  "specs": [
+    {
+      "parameter": "Sensitivity Error",
+      "value": "0.55",
+      "unit": "%",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Sensitivity Error | ESENS | 0.55 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Bandwidth",
+      "value": "400",
+      "unit": "kHz",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Bandwidth | BW | 400 | kHz",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Response Time",
+      "value": "1.1",
+      "unit": "µs",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Response Time | tRESPONSE | 1.1 | µs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Voltage",
+      "value": "8",
+      "unit": "mV",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Offset Voltage | VOE | 8 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Voltage",
+      "value": "5",
+      "unit": "V",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Supply Voltage | VCC | 5 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Operating Temperature",
+      "value": "150",
+      "unit": "°C",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Operating Temperature | TA | 150 | °C",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Isolation Voltage",
+      "value": "4.8",
+      "unit": "kVRMS",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Isolation Voltage | VISO | 4.8 | kVRMS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise",
+      "value": "124",
+      "unit": "mVRMS",
+      "source_location": "p.1 / table 1",
+      "raw_context": "Noise | VNOISE | 124 | mVRMS",
+      "confidence": "high"
+    }
+  ]
+}

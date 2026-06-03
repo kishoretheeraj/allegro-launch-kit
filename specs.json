@@ -1,0 +1,1672 @@
+{
+  "source_pdf": "datasheets/ACS37002-datasheet.pdf",
+  "spec_count": 208,
+  "high_confidence": 159,
+  "low_confidence_flagged": 49,
+  "specs": [
+    {
+      "parameter": "resistance of",
+      "value": "0.85",
+      "unit": "mΩ",
+      "source_location": "p.1 / FEATURES AND BENEFITS DESCRIPTION",
+      "raw_context": "resistance of 0.85 mΩ. The LA package is optimized for lower",
+      "confidence": "low"
+    },
+    {
+      "parameter": "noise with V of",
+      "value": "4242",
+      "unit": "V",
+      "source_location": "p.1 / FEATURES AND BENEFITS DESCRIPTION",
+      "raw_context": "noise with V of 4242 V and conductor resistance of 1 mΩ.",
+      "confidence": "low"
+    },
+    {
+      "parameter": "PACKAGE: 16-Pin SOICW (suffix MA/LA) corresponds to the",
+      "value": "0",
+      "unit": "A",
+      "source_location": "p.1 / □ 1 µs typical response time The ACS37002 has functional features that are externally",
+      "raw_context": "PACKAGE: 16-Pin SOICW (suffix MA/LA) corresponds to the 0 A output voltage. This reference voltage",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Nominal V CC",
+      "value": "5",
+      "unit": "V",
+      "source_location": "p.2 / table 1",
+      "raw_context": "ACS37002LMABTR-050B5-M | ±33, ±40, ±50, ±66 | 60, 50, 40, 30 | 5 | –40 to 150 | 1000 pieces per 13-inch reel",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Nominal V CC",
+      "value": "3.3",
+      "unit": "V",
+      "source_location": "p.2 / table 1",
+      "raw_context": "ACS37002LMABTR-050B3 | ±33, ±40, ±50, ±66 | 39.6, 33, 26.4, 19.8 | 3.3 |  | ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Low internal primary conductor resistance",
+      "value": "0.85",
+      "unit": "mΩ",
+      "source_location": "p.2 / FEATURES AND BENEFITS (continued) ACS 37002 K MAB TR - 050 B 5 - M",
+      "raw_context": "• Low internal primary conductor resistance 0.85 mΩ (MA Supply Voltage:",
+      "confidence": "low"
+    },
+    {
+      "parameter": "package) and",
+      "value": "1",
+      "unit": "mΩ",
+      "source_location": "p.2 / FEATURES AND BENEFITS (continued) ACS 37002 K MAB TR - 050 B 5 - M",
+      "raw_context": "package) and 1 mΩ (LA package) for better power efficiency",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Wide operating temperature, –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.2 / FEATURES AND BENEFITS (continued) ACS 37002 K MAB TR - 050 B 5 - M",
+      "raw_context": "• Wide operating temperature, –40°C to 150°C Packing Designator",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Device performance is optimized from –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.2 / [2] For the GAIN_SEL configuration, refer to the relevant part-specific section of the Performance Characteristics table.",
+      "raw_context": "[3] Device performance is optimized from –40°C to 125°C; however, the device can operate to an ambient temperature of 150°C. The device shares the same qualifications",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Forward Supply Voltage",
+      "value": "6.5",
+      "unit": "V",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Forward Supply Voltage | V FCC |  | 6.5 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reverse Supply Voltage",
+      "value": "-0.5",
+      "unit": "V",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Reverse Supply Voltage | V RCC |  | –0.5 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Operating Ambient Temperature",
+      "value": "150",
+      "unit": "°C",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Operating Ambient Temperature | T A |  | –40 to 150 | °C",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Storage Temperature",
+      "value": "165",
+      "unit": "°C",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Storage Temperature | T stg |  | –65 to 165 | °C",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Maximum Junction Temperature",
+      "value": "165",
+      "unit": "°C",
+      "source_location": "p.4 / table 1",
+      "raw_context": "Maximum Junction Temperature | T J(max) |  | 165 | °C",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Package Thermal Resistance (Junction to Ambient)",
+      "value": "20",
+      "unit": "°C/W",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Package Thermal Resistance (Junction to Ambient) | R θJA | Mounted on the standard MA/LA Current Sensor Evaluation Board (ACSEVB-MA16-LA16) | 20 | °C/W",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Package Thermal Metric (Junction to Top)",
+      "value": "2.4",
+      "unit": "°C/W",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Package Thermal Metric (Junction to Top) | Ψ JT |  | 2.4 | °C/W",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Package Thermal Resistance (Junction to Case)",
+      "value": "14",
+      "unit": "°C/W",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Package Thermal Resistance (Junction to Case) | R θJC | Simulated per the methods in JESD51-1 | 14 | °C/W",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Package Thermal Resistance (Junction to Ambient)",
+      "value": "16",
+      "unit": "°C/W",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Package Thermal Resistance (Junction to Ambient) | R θJA | Mounted on the standard MA/LA Current Sensor Evaluation Board (ACSEVB-MA16-LA16) | 16 | °C/W",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Package Thermal Characterization (Junction to Top)",
+      "value": "-1.7",
+      "unit": "°C/W",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Package Thermal Characterization (Junction to Top) | Ψ JT |  | –1.7 | °C/W",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Package Thermal Resistance (Junction to Case)",
+      "value": "10",
+      "unit": "°C/W",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Package Thermal Resistance (Junction to Case) | R θJC | Simulated per the methods in JESD51-1 | 10 | °C/W",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Package Thermal Resistance (Junction to Board)",
+      "value": "8",
+      "unit": "°C/W",
+      "source_location": "p.4 / table 2",
+      "raw_context": "Package Thermal Resistance (Junction to Board) | R θJB | Simulated per the methods in JESD51-8 | 8 | °C/W",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reverse Supply Voltage V –",
+      "value": "0.5",
+      "unit": "V",
+      "source_location": "p.4 / ABSOLUTE MAXIMUM RATINGS",
+      "raw_context": "Reverse Supply Voltage V –0.5 V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Moisture Sensitivity Level",
+      "value": "3",
+      "unit": "–",
+      "source_location": "p.5 / table 1",
+      "raw_context": "Moisture Sensitivity Level | MSL | Per IPC/JEDEC J-STD-020 | 3 | –",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Voltage",
+      "value": "5",
+      "unit": "V",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Supply Voltage | V CC | 5 V devices only | 4.5 | 5 | 5.5 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Voltage",
+      "value": "3.3",
+      "unit": "V",
+      "source_location": "p.8 / table 1",
+      "raw_context": " |  | 3.3 V devices only | 3.15 | 3.3 | 3.6 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Current",
+      "value": "13",
+      "unit": "mA",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Supply Current | I CC | Load not present on VIOUT or VREF; V = 5 V CC | – | 13 | 18 | mA",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Supply Current",
+      "value": "12",
+      "unit": "mA",
+      "source_location": "p.8 / table 1",
+      "raw_context": " |  | Load not present on VIOUT or VREF; V = 3.3 V CC | – | 12 | 15 | mA",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Resistive Load",
+      "value": "10",
+      "unit": "kΩ",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Reference Resistive Load | R VREF | VREF to GND (recommended to supply VOC); VREF to VCC | 10 | – | – | kΩ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Capacitive Load",
+      "value": "6",
+      "unit": "nF",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Reference Capacitive Load | C VREF | VREF to GND | – | – | 6 | nF",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Fault Pull-Up Resistance",
+      "value": "500",
+      "unit": "kΩ",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Fault Pull-Up Resistance | R PU |  | 4.7 | – | 500 | kΩ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Primary Conductor Resistance",
+      "value": "0.85",
+      "unit": "mΩ",
+      "source_location": "p.8 / table 1",
+      "raw_context": "Primary Conductor Resistance | R IP | MA,T = 25°C A | – | 0.85 | – | mΩ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Primary Conductor Resistance",
+      "value": "1",
+      "unit": "mΩ",
+      "source_location": "p.8 / table 1",
+      "raw_context": " |  | LA,T = 25°C A | – | 1 | – | mΩ",
+      "confidence": "high"
+    },
+    {
+      "parameter": "COMMON ELECTRICAL CHARACTERISTICS: Valid through full operating temperature range, T = –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.8 / COMMON ELECTRICAL CHARACTERISTICS: Valid through full operating temperature range, T = – 40°C to 150°C,",
+      "raw_context": "COMMON ELECTRICAL CHARACTERISTICS: Valid through full operating temperature range, T = – 40°C to 150°C,",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Saturation Voltage",
+      "value": "0.15",
+      "unit": "V",
+      "source_location": "p.9 / table 1",
+      "raw_context": " | V SAT(L) | R = 10 kΩ to V L CC |  | – | – | 0.15 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Bandwidth",
+      "value": "400",
+      "unit": "kHz",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Bandwidth | BW | Small signal –3 dB, C = 6 nF L |  | – | 400 | – | kHz",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Rise Time",
+      "value": "0.7",
+      "unit": "µs",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Rise Time | t R | T = 25°C, C = 6 nF A L |  | – | 0.7 | 2.5 | µs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Response Time",
+      "value": "1.1",
+      "unit": "μs",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Response Time | t RESPONSE | T = 25°C, C = 6 nF A L |  | – | 1.1 | 2.5 | μs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise Density",
+      "value": "350",
+      "unit": "µA/√Hz",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Noise Density | I ND | Input-referenced noise density; T = 25°C, C = 6 nF; V = 5 V A L CC | MA package | – | 350 | – | µA/√Hz",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise Density",
+      "value": "155",
+      "unit": "µA/√Hz",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  |  | LA package | – | 155 | – | µA/√Hz",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise Density",
+      "value": "450",
+      "unit": "µA/√Hz",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  | Input-referenced noise density; T = 25°C, C = 6 nF; V = 3.3 V A L CC | MA package | – | 450 | – | µA/√Hz",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise Density",
+      "value": "200",
+      "unit": "µA/√Hz",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  |  | LA package | – | 200 | – | µA/√Hz",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise",
+      "value": "277",
+      "unit": "mA RMS",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Noise | I N | Input-referenced noise at 400 kHz; T = 25°C, C = 6 nF; V = 5 V A L CC | MA package | – | 277 | – | mA RMS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise",
+      "value": "124",
+      "unit": "mA RMS",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  |  | LA package | – | 124 | – | mA RMS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise",
+      "value": "357",
+      "unit": "mA RMS",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  | Input-referenced noise at 400 kHz; T = 25°C, C = 6 nF; V = 3.3 V A L CC | MA package | – | 357 | – | mA RMS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Noise",
+      "value": "160",
+      "unit": "mA RMS",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  |  | LA package | – | 160 | – | mA RMS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Nonlinearity",
+      "value": "0.75",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Nonlinearity | E LIN |  |  | – | ±0.75 | – | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Power Supply Rejection Ratio Offset",
+      "value": "-40",
+      "unit": "dB",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Power Supply Rejection Ratio Offset | PSRR O | T = 25°C, DC to 1 kHz, 100 mV pk-pk ripple around V = A CC V , I = 0 A CC(typ) P |  | – | –40 | – | dB",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Power Supply Rejection Ratio Offset",
+      "value": "-30",
+      "unit": "dB",
+      "source_location": "p.9 / table 1",
+      "raw_context": " |  | T = 25°C, 1 to 100 kHz, 100 mV pk-pk ripple around V = A CC V , I = 0 A CC(typ) P |  | – | –30 | – | dB",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Power Supply Offset Error",
+      "value": "1",
+      "unit": "mV",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Power Supply Offset Error | V OE(PS) | 3.3 V variant, bidirectional; V @ 3.15 V or 3.45 V CC |  | –10 | ±1 | 10 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Power Supply Sensitivity Error",
+      "value": "1.5",
+      "unit": "%",
+      "source_location": "p.9 / table 1",
+      "raw_context": "Power Supply Sensitivity Error | E SENS(PS) | 3.3 V variant, V @ 3.15 V or 3.45 V CC | –1.5 | ±0.3 | 1.5 | % | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Bandwidth BW Small signal –",
+      "value": "3",
+      "unit": "dB",
+      "source_location": "p.9 / COMMON PERFORMANCE CHARACTERISTICS (VIOUT): Valid through full operating temperature range,",
+      "raw_context": "Bandwidth BW Small signal –3 dB, C = 6 nF – 400 – kHz",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Rise Time t T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.9 / COMMON PERFORMANCE CHARACTERISTICS (VIOUT): Valid through full operating temperature range,",
+      "raw_context": "Rise Time t T = 25°C, C = 6 nF – 0.7 2.5 µs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Response Time t T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.9 / COMMON PERFORMANCE CHARACTERISTICS (VIOUT): Valid through full operating temperature range,",
+      "raw_context": "Response Time t T = 25°C, C = 6 nF – 1.1 2.5 μs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Input-referenced noise at",
+      "value": "400",
+      "unit": "kHz",
+      "source_location": "p.9 / COMMON PERFORMANCE CHARACTERISTICS (VIOUT): Valid through full operating temperature range,",
+      "raw_context": "Input-referenced noise at 400 kHz; MA package – 277 – mA RMS",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Offset O T =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.9 / COMMON PERFORMANCE CHARACTERISTICS (VIOUT): Valid through full operating temperature range,",
+      "raw_context": "Offset O T = 25°C, 1 to 100 kHz, 100 mV pk-pk ripple around V =",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Zero-Current Reference Voltage",
+      "value": "2.5",
+      "unit": "V",
+      "source_location": "p.10 / table 1",
+      "raw_context": "Zero-Current Reference Voltage | V REF(BI) | Bidirectional; V = 5 V CC | 2.49 | 2.5 | 2.51 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero-Current Reference Voltage",
+      "value": "1.65",
+      "unit": "V",
+      "source_location": "p.10 / table 1",
+      "raw_context": " |  | Bidirectional; V = 3.3 V CC | 1.64 | 1.65 | 1.66 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero-Current Reference Voltage",
+      "value": "0.5",
+      "unit": "V",
+      "source_location": "p.10 / table 1",
+      "raw_context": " | V REF(UNI) | Unidirectional; V = 5 V CC | 0.49 | 0.5 | 0.51 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero-Current Reference Voltage",
+      "value": "0.33",
+      "unit": "V",
+      "source_location": "p.10 / table 1",
+      "raw_context": " |  | Unidirectional; V = 3.3 V CC | 0.32 | 0.33 | 0.34 | V",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Source Current Limit",
+      "value": "25",
+      "unit": "mA",
+      "source_location": "p.10 / table 1",
+      "raw_context": "Reference Source Current Limit | I REF(SRC) | Maximum current V can passively source REF | – | 25 | – | mA",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Source Current Limit",
+      "value": "-25",
+      "unit": "mA",
+      "source_location": "p.10 / table 1",
+      "raw_context": " | I REF(SNK) | Maximum current V can passively sink REF | – | –25 | – | mA",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Reference Slew Rate",
+      "value": "0.8",
+      "unit": "V/µs",
+      "source_location": "p.10 / table 1",
+      "raw_context": "Reference Slew Rate | SR REF | C = 0 nF, R = 0 Ω VREF VREF | 0.8 | – | – | V/µs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Fault Error",
+      "value": "3",
+      "unit": "%I OCF-OP",
+      "source_location": "p.10 / table 1",
+      "raw_context": "Fault Error | E OCF |  | –10 | ±3 | 10 | %I OCF-OP",
+      "confidence": "high"
+    },
+    {
+      "parameter": "OCF Response Time [3]",
+      "value": "1",
+      "unit": "µs",
+      "source_location": "p.10 / table 1",
+      "raw_context": "OCF Response Time [3] | t OCF | t = 0 µs OCF-MASK | – | 1 | 1.5 | µs",
+      "confidence": "high"
+    },
+    {
+      "parameter": "temperature range, T = –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "temperature range, T = – 40°C to 150°C, C = 0.1 μF, and V = 5 V or 3.3 V, unless otherwise specified",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Zero-Current Reference Bidirectional; V CC =",
+      "value": "3.3",
+      "unit": "V",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "Zero-Current Reference Bidirectional; V CC = 3.3 V 1.64 1.65 1.66 V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Reference Slew Rate SR C =",
+      "value": "0",
+      "unit": "nF",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "Reference Slew Rate SR C = 0 nF, R = 0 Ω 0.8 – – V/µs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "OCF On Voltage [3] V R = 4.7 kΩ, under fault condition – 0.07",
+      "value": "0.4",
+      "unit": "V",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "OCF On Voltage [3] V R = 4.7 kΩ, under fault condition – 0.07 0.4 V",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Fault asserted 0.01 –",
+      "value": "1.1",
+      "unit": "mA",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "Fault asserted 0.01 – 1.1 mA",
+      "confidence": "low"
+    },
+    {
+      "parameter": "OCF Reaction Time [3] t Time from I , with a 1.2 × I until fault asserts – 1",
+      "value": "1.5",
+      "unit": "μs",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "OCF Reaction Time [3] t Time from I , with a 1.2 × I until fault asserts – 1 1.5 μs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "OCF Mask [3] t Time I must be present after t for fault assertion [3] 0 0",
+      "value": "3",
+      "unit": "µs",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "OCF Mask [3] t Time I must be present after t for fault assertion [3] 0 0 3 µs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "OCF Response Time [3] t t =",
+      "value": "0",
+      "unit": "µs",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "OCF Response Time [3] t t = 0 µs – 1 1.5 µs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "OCF Hold Time [3] t Minimum duration of fault assertion [2] 0 0",
+      "value": "5",
+      "unit": "ms",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "OCF Hold Time [3] t Minimum duration of fault assertion [2] 0 0 5 ms",
+      "confidence": "low"
+    },
+    {
+      "parameter": "VCC rate",
+      "value": "+1",
+      "unit": "V",
+      "source_location": "p.10 / COMMON PERFORMANCE CHARACTERISTICS (VREF, FAULT, GAIN_SEL): Valid through full operating",
+      "raw_context": "[1] VCC rate +1 V/ms, for best accuracy.",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sens",
+      "value": "40",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 40 | 50",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "50",
+      "unit": "A",
+      "source_location": "p.11 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 40 | 50",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "50",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 1",
+      "raw_context": " | 0 | 1 | 50 | 40",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "40",
+      "unit": "A",
+      "source_location": "p.11 / table 1",
+      "raw_context": " | 0 | 1 | 50 | 40",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "60",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 1",
+      "raw_context": " | 1 | 0 | 60 | 33.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "33.3",
+      "unit": "A",
+      "source_location": "p.11 / table 1",
+      "raw_context": " | 1 | 0 | 60 | 33.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "30",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 1",
+      "raw_context": " | 1 | 1 | 30 | 66.7",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "66.7",
+      "unit": "A",
+      "source_location": "p.11 / table 1",
+      "raw_context": " | 1 | 1 | 30 | 66.7",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "50",
+      "unit": "A",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Current Sensing Range | IPR | GAIN_SEL 00 | –50 | – | – | – | 50 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "40",
+      "unit": "A",
+      "source_location": "p.11 / table 2",
+      "raw_context": " |  | GAIN_SEL 01 | –40 | – | – | – | 40 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "33.3",
+      "unit": "A",
+      "source_location": "p.11 / table 2",
+      "raw_context": " |  | GAIN_SEL 10 | –33.3 | – | – | – | 33.3 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "66.7",
+      "unit": "A",
+      "source_location": "p.11 / table 2",
+      "raw_context": " |  | GAIN_SEL 11 | –66.7 | – | – | – | 66.7 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "40",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Sensitivity | Sens | GAIN_SEL 00; IPR(min) < IP < IPR(max) | – | – | 40 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "50",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – | – | 50 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "60",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – | – | 60 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "30",
+      "unit": "mV/A",
+      "source_location": "p.11 / table 2",
+      "raw_context": " |  | GAIN_SEL 11; IPR(min) < IP < IPR(max) | – | – | 30 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Overcurrent Fault Operating Range",
+      "value": "100",
+      "unit": "%FS",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Overcurrent Fault Operating Range | IOCF-OR | Typ. = factory-programmed default, FS = full-scale | 50 | – | 100 | – | 200 | %FS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Error",
+      "value": "1.75",
+      "unit": "%",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Total Error | ETOT | IP = IPR(max) | –1.75 | –1.1 | – | 1.1 | 1.75 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "1.5",
+      "unit": "%",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Sensitivity Error | ESENS | IP = IPR(max), TA = 25°C to 150°C or –40°C to 25°C | –1.5 | –1.1 | – | 1.1 | 1.5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero-Current Reference Error",
+      "value": "10",
+      "unit": "mV",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Zero-Current Reference Error | VRE | VREFactual – VREFideal, IP = 0 A, TA = 25°C to 150°C | –10 | –5 | – | 5 | 10 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Error",
+      "value": "8",
+      "unit": "mV",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Offset Error | VOE | VIOUT(Q) – VREF, IP = 0 A, TA = 25°C to 150°C | –8 | –5 | – | 5 | 8 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "QVO Error",
+      "value": "10",
+      "unit": "mV",
+      "source_location": "p.11 / table 2",
+      "raw_context": "QVO Error | VQE | VIOUT(Q), IP = 0 A, TA = 25°C to 150°C | –10 | –8 | – | 8 | 10 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Error Including Lifetime Drift",
+      "value": "3.6",
+      "unit": "%",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Total Error Including Lifetime Drift | ETOT_LTD | IP = IPR(max) | –3.6 | –2.8 | – | 2.8 | 3.6 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift",
+      "value": "3.4",
+      "unit": "%",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Sensitivity Error Including Lifetime Drift | ESENS_LTD | IP = IPR(max), TA = 25°C to 150°C or –40°C to 25°C | –3.4 | –2.6 | – | 2.6 | 3.4 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Error Including Lifetime Drift",
+      "value": "10",
+      "unit": "mV",
+      "source_location": "p.11 / table 2",
+      "raw_context": "Offset Error Including Lifetime Drift | VOE_LTD | VIOUT(Q) – VREF, IP = 0 A, TA = 25°C to 150°C | –10 | –7 | – | 7 | 10 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "QVO Error Including Lifetime Drift",
+      "value": "14",
+      "unit": "mV",
+      "source_location": "p.11 / table 2",
+      "raw_context": "QVO Error Including Lifetime Drift | VQE_LTD | VIOUT(Q), IP = 0 A, TA = 25°C to 150°C | –14 | –10 | – | 10 | 14 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "ACS37002LMABTR-050B3 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.15 / ACS37002LMABTR-050B3 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 150°C,",
+      "raw_context": "ACS37002LMABTR-050B3 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 150°C,",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Overcurrent Fault Operating Range IOCF-OR Typ. = factory-programmed default, FS = full-scale 50 100",
+      "value": "200",
+      "unit": "%FS",
+      "source_location": "p.22 / ACS37002LLAATR-025B5 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 150°C,",
+      "raw_context": "Overcurrent Fault Operating Range IOCF-OR Typ. = factory-programmed default, FS = full-scale 50 100 200 %FS",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sensitivity Error ESENS IP = IPR(max), TA =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.11 / ACS37002LMABTR-050B5-M PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 150°C,",
+      "raw_context": "Sensitivity Error ESENS IP = IPR(max), TA = 25°C to 150°C or –40°C to 25°C –1.5 –1.1 – 1.1 1.5 %",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Zero-Current Reference Error VREFactual – VREFideal, IP =",
+      "value": "0",
+      "unit": "A",
+      "source_location": "p.11 / ACS37002LMABTR-050B5-M PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 150°C,",
+      "raw_context": "Zero-Current Reference Error VREFactual – VREFideal, IP = 0 A, TA = 25°C to 150°C –10 –7 – 7 10 mV",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sens",
+      "value": "25",
+      "unit": "mV/A",
+      "source_location": "p.12 / table 1",
+      "raw_context": " | 0 | 1 | 25 | 80",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "80",
+      "unit": "A",
+      "source_location": "p.12 / table 1",
+      "raw_context": " | 0 | 1 | 25 | 80",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "20",
+      "unit": "mV/A",
+      "source_location": "p.12 / table 1",
+      "raw_context": " | 1 | 0 | 20 | 100",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "100",
+      "unit": "A",
+      "source_location": "p.12 / table 1",
+      "raw_context": " | 1 | 0 | 20 | 100",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "15",
+      "unit": "mV/A",
+      "source_location": "p.12 / table 1",
+      "raw_context": " | 1 | 1 | 15 | 133.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "133.3",
+      "unit": "A",
+      "source_location": "p.12 / table 1",
+      "raw_context": " | 1 | 1 | 15 | 133.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "80",
+      "unit": "A",
+      "source_location": "p.12 / table 2",
+      "raw_context": " |  | GAIN_SEL 01 | –80 | – | – | – | 80 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "100",
+      "unit": "A",
+      "source_location": "p.12 / table 2",
+      "raw_context": " |  | GAIN_SEL 10 | –100 | – | – | – | 100 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "133.3",
+      "unit": "A",
+      "source_location": "p.12 / table 2",
+      "raw_context": " |  | GAIN_SEL 11 | –133.3 | – | – | – | 133.3 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "25",
+      "unit": "mV/A",
+      "source_location": "p.12 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – | – | 25 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "20",
+      "unit": "mV/A",
+      "source_location": "p.12 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – | – | 20 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "15",
+      "unit": "mV/A",
+      "source_location": "p.12 / table 2",
+      "raw_context": " |  | GAIN_SEL 11; IPR(min) < IP < IPR(max) | – | – | 15 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "80",
+      "unit": "mV/A",
+      "source_location": "p.13 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 80 | 50",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "100",
+      "unit": "mV/A",
+      "source_location": "p.13 / table 1",
+      "raw_context": " | 0 | 1 | 100 | 40",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "120",
+      "unit": "mV/A",
+      "source_location": "p.13 / table 1",
+      "raw_context": " | 1 | 0 | 120 | 33.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "80",
+      "unit": "mV/A",
+      "source_location": "p.13 / table 2",
+      "raw_context": "Sensitivity | Sens | GAIN_SEL 00; IPR(min) < IP < IPR(max) | – | – | 80 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "100",
+      "unit": "mV/A",
+      "source_location": "p.13 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – | – | 100 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "120",
+      "unit": "mV/A",
+      "source_location": "p.13 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – | – | 120 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Overcurrent Fault Operating Range",
+      "value": "50",
+      "unit": "%FS",
+      "source_location": "p.13 / table 2",
+      "raw_context": "Overcurrent Fault Operating Range | IOCF-OR | Typ. = factory-programmed default, FS = full-scale | 25 | – | 50 | – | 100 | %FS",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "26.4",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 26.4 | 50",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "33",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 1",
+      "raw_context": " | 0 | 1 | 33 | 40",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "39.6",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 1",
+      "raw_context": " | 1 | 0 | 39.6 | 33.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "19.8",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 1",
+      "raw_context": " | 1 | 1 | 19.8 | 66.7",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "26.4",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 2",
+      "raw_context": "Sensitivity | Sens | GAIN_SEL 00; IPR(min) < IP < IPR(max) | – | – | 26.4 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "33",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – | – | 33 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "39.6",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – | – | 39.6 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "19.8",
+      "unit": "mV/A",
+      "source_location": "p.15 / table 2",
+      "raw_context": " |  | GAIN_SEL 11; IPR(min) < IP < IPR(max) | – | – | 19.8 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "16.5",
+      "unit": "mV/A",
+      "source_location": "p.16 / table 1",
+      "raw_context": " | 0 | 1 | 16.5 | 80",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "13.2",
+      "unit": "mV/A",
+      "source_location": "p.16 / table 1",
+      "raw_context": " | 1 | 0 | 13.2 | 100",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "9.9",
+      "unit": "mV/A",
+      "source_location": "p.16 / table 1",
+      "raw_context": " | 1 | 1 | 9.9 | 133.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "16.5",
+      "unit": "mV/A",
+      "source_location": "p.16 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – |  | 16.5 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "13.2",
+      "unit": "mV/A",
+      "source_location": "p.16 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – |  | 13.2 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "9.9",
+      "unit": "mV/A",
+      "source_location": "p.16 / table 2",
+      "raw_context": " |  | GAIN_SEL 11; IPR(min) < IP < IPR(max) | – |  | 9.9 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "52.8",
+      "unit": "mV/A",
+      "source_location": "p.17 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 52.8 | 50",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "66",
+      "unit": "mV/A",
+      "source_location": "p.17 / table 1",
+      "raw_context": " | 0 | 1 | 66 | 40",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "79.2",
+      "unit": "mV/A",
+      "source_location": "p.17 / table 1",
+      "raw_context": " | 1 | 0 | 79.2 | 33.3",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "52.8",
+      "unit": "mV/A",
+      "source_location": "p.17 / table 2",
+      "raw_context": "Sensitivity | Sens | GAIN_SEL 00; IPR(min) < IP < IPR(max) | – |  | 52.8 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "66",
+      "unit": "mV/A",
+      "source_location": "p.17 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – |  | 66 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "79.2",
+      "unit": "mV/A",
+      "source_location": "p.17 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – |  | 79.2 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error",
+      "value": "1",
+      "unit": "%",
+      "source_location": "p.19 / table 2",
+      "raw_context": "Sensitivity Error | ESENS | IP = IPR(max), TA = 25°C to 125°C, TA = –40°C to 25°C | –1 | –0.9 | – | 0.9 | 1 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Error Including Lifetime Drift",
+      "value": "3.4",
+      "unit": "%",
+      "source_location": "p.19 / table 2",
+      "raw_context": "Total Error Including Lifetime Drift | ETOT_LTD | IP = IPR(max) | –3.4 | –2.8 | – | 2.8 | 3.4 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift",
+      "value": "3.2",
+      "unit": "%",
+      "source_location": "p.19 / table 2",
+      "raw_context": "Sensitivity Error Including Lifetime Drift | ESENS_LTD | IP = IPR(max), TA = 25°C to 125°C or –40°C to 25°C | –3.2 | –2.6 | – | 2.6 | 3.2 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "ACS37002KMABTR-050B3 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.20 / ACS37002KMABTR-050B3 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 125°C,",
+      "raw_context": "ACS37002KMABTR-050B3 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 125°C,",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Sens",
+      "value": "133.3",
+      "unit": "mV/A",
+      "source_location": "p.21 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 133.3 | 15",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "15",
+      "unit": "A",
+      "source_location": "p.21 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 133.3 | 15",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "166.6",
+      "unit": "mV/A",
+      "source_location": "p.21 / table 1",
+      "raw_context": " | 0 | 1 | 166.6 | 12",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "12",
+      "unit": "A",
+      "source_location": "p.21 / table 1",
+      "raw_context": " | 0 | 1 | 166.6 | 12",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "200",
+      "unit": "mV/A",
+      "source_location": "p.21 / table 1",
+      "raw_context": " | 1 | 0 | 200 | 10",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "10",
+      "unit": "A",
+      "source_location": "p.21 / table 1",
+      "raw_context": " | 1 | 0 | 200 | 10",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "20",
+      "unit": "A",
+      "source_location": "p.21 / table 1",
+      "raw_context": " | 1 | 1 | 100 | 20",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "15",
+      "unit": "A",
+      "source_location": "p.21 / table 2",
+      "raw_context": "Current Sensing Range | IPR | GAIN_SEL 00 | –15 | – | – | – | 15 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "12",
+      "unit": "A",
+      "source_location": "p.21 / table 2",
+      "raw_context": " |  | GAIN_SEL 01 | –12 | – | – | – | 12 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "10",
+      "unit": "A",
+      "source_location": "p.21 / table 2",
+      "raw_context": " |  | GAIN_SEL 10 | –10 | – | – | – | 10 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "20",
+      "unit": "A",
+      "source_location": "p.21 / table 2",
+      "raw_context": " |  | GAIN_SEL 11 | –20 | – | – | – | 20 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "133.3",
+      "unit": "mV/A",
+      "source_location": "p.21 / table 2",
+      "raw_context": "Sensitivity | Sens | GAIN_SEL 00; IPR(min) < IP < IPR(max) | – | – | 133.3 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "166.6",
+      "unit": "mV/A",
+      "source_location": "p.21 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – | – | 166.6 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "200",
+      "unit": "mV/A",
+      "source_location": "p.21 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – | – | 200 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Error Including Lifetime Drift",
+      "value": "3.7",
+      "unit": "%",
+      "source_location": "p.21 / table 2",
+      "raw_context": "Total Error Including Lifetime Drift | ETOT_LTD | IP = IPR(max), TA = 25°C to 150°C | –3.7 | –2.5 | – | 2.5 | 3.7 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Total Error Including Lifetime Drift",
+      "value": "3.5",
+      "unit": "%",
+      "source_location": "p.21 / table 2",
+      "raw_context": " |  | IP = IPR(max), TA = –40°C to 25°C | –3.5 | –2.4 | – | 2.4 | 3.5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity Error Including Lifetime Drift",
+      "value": "3.5",
+      "unit": "%",
+      "source_location": "p.21 / table 2",
+      "raw_context": "Sensitivity Error Including Lifetime Drift | ESENS_LTD | IP = IPR(max), TA = 25°C to 150°C | –3.5 | –2.4 | – | 2.4 | 3.5 | %",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Zero-Current Reference Error Including Lifetime Drift",
+      "value": "11",
+      "unit": "mV",
+      "source_location": "p.21 / table 2",
+      "raw_context": "Zero-Current Reference Error Including Lifetime Drift | VRE_LTD | VREFactual – VREFideal, IP = 0 A, TA = 25°C to 125°C, TA = –40°C to 25°C | –11 | –7 | – | 7 | 11 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Error Including Lifetime Drift",
+      "value": "15",
+      "unit": "mV",
+      "source_location": "p.21 / table 2",
+      "raw_context": "Offset Error Including Lifetime Drift | VOE_LTD | VIOUT(Q) – VREF, IP = 0 A, TA = 25°C to 125°C | –15 | –9 | – | 9 | 15 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Offset Error Including Lifetime Drift",
+      "value": "11",
+      "unit": "mV",
+      "source_location": "p.21 / table 2",
+      "raw_context": " |  | VIOUT(Q) – VREF, IP = 0 A, TA = –40°C to 25°C | –11 | –7 | – | 7 | 11 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "QVO Error Including Lifetime Drift",
+      "value": "17",
+      "unit": "mV",
+      "source_location": "p.21 / table 2",
+      "raw_context": "QVO Error Including Lifetime Drift | VQE_LTD | VIOUT(Q), IP = 0 A, TA = 25°C to 125°C | –17 | –9 | – | 9 | 17 | mV",
+      "confidence": "high"
+    },
+    {
+      "parameter": "ACS37002LLAATR-015B5 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.21 / ACS37002LLAATR-015B5 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 150°C,",
+      "raw_context": "ACS37002LLAATR-015B5 PERFORMANCE CHARACTERISTICS: Valid through full operating temperature range, T A = – 40°C to 150°C,",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "25",
+      "unit": "A",
+      "source_location": "p.22 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 80 | 25",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "66.6",
+      "unit": "mV/A",
+      "source_location": "p.22 / table 1",
+      "raw_context": " | 0 | 1 | 66.6 | 30",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "30",
+      "unit": "A",
+      "source_location": "p.22 / table 1",
+      "raw_context": " | 0 | 1 | 66.6 | 30",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "53.3",
+      "unit": "mV/A",
+      "source_location": "p.22 / table 1",
+      "raw_context": " | 1 | 0 | 53.3 | 37.5",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Max IP",
+      "value": "37.5",
+      "unit": "A",
+      "source_location": "p.22 / table 1",
+      "raw_context": " | 1 | 0 | 53.3 | 37.5",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "25",
+      "unit": "A",
+      "source_location": "p.22 / table 2",
+      "raw_context": "Current Sensing Range | IPR | GAIN_SEL 00 | –25 |  | – |  | 25 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "30",
+      "unit": "A",
+      "source_location": "p.22 / table 2",
+      "raw_context": " |  | GAIN_SEL 01 | –30 |  | – |  | 30 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Current Sensing Range",
+      "value": "37.5",
+      "unit": "A",
+      "source_location": "p.22 / table 2",
+      "raw_context": " |  | GAIN_SEL 10 | –37.5 |  | – |  | 37.5 | A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "66.6",
+      "unit": "mV/A",
+      "source_location": "p.22 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – |  | 66.6 |  | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "53.3",
+      "unit": "mV/A",
+      "source_location": "p.22 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – |  | 53.3 |  | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "88",
+      "unit": "mV/A",
+      "source_location": "p.23 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 88 | 15",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "110",
+      "unit": "mV/A",
+      "source_location": "p.23 / table 1",
+      "raw_context": " | 0 | 1 | 110 | 12",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "132",
+      "unit": "mV/A",
+      "source_location": "p.23 / table 1",
+      "raw_context": " | 1 | 0 | 132 | 10",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "88",
+      "unit": "mV/A",
+      "source_location": "p.23 / table 2",
+      "raw_context": "Sensitivity | Sens | GAIN_SEL 00; IPR(min) < IP < IPR(max) | – |  | 88 |  | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "110",
+      "unit": "mV/A",
+      "source_location": "p.23 / table 2",
+      "raw_context": " |  | GAIN_SEL 01; IPR(min) < IP < IPR(max) | – |  | 110 |  | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "132",
+      "unit": "mV/A",
+      "source_location": "p.23 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – |  | 132 |  | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "105.6",
+      "unit": "mV/A",
+      "source_location": "p.24 / table 1",
+      "raw_context": "Selection Combination | 0 | 0 | 105.6 | 25",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sens",
+      "value": "70.4",
+      "unit": "mV/A",
+      "source_location": "p.24 / table 1",
+      "raw_context": " | 1 | 0 | 70.4 | 37.5",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "105.6",
+      "unit": "mV/A",
+      "source_location": "p.24 / table 2",
+      "raw_context": "Sensitivity | Sens | GAIN_SEL 00; IPR(min) < IP < IPR(max) | – | – | 105.6 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "Sensitivity",
+      "value": "70.4",
+      "unit": "mV/A",
+      "source_location": "p.24 / table 2",
+      "raw_context": " |  | GAIN_SEL 10; IPR(min) < IP < IPR(max) | – | – | 70.4 | – | – | mV/A",
+      "confidence": "high"
+    },
+    {
+      "parameter": "The descriptions in this section assume: temperature =",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.25",
+      "raw_context": "The descriptions in this section assume: temperature = 25°C, with",
+      "confidence": "low"
+    },
+    {
+      "parameter": "up to",
+      "value": "6.5",
+      "unit": "V",
+      "source_location": "p.27 / FORWARD AND REVERSE OUTPUT VOLTAGES specific performance characteristics limits are valid. ACS37002L",
+      "raw_context": "up to 6.5 V; this is the highest voltage that can be used during (“L” temperature) range. ACS37002K devices have optimized",
+      "confidence": "low"
+    },
+    {
+      "parameter": "programming or transient switching to bias the output from GND. performance in the –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.27 / FORWARD AND REVERSE OUTPUT VOLTAGES specific performance characteristics limits are valid. ACS37002L",
+      "raw_context": "programming or transient switching to bias the output from GND. performance in the –40°C to 125°C (“K” temperature) range. The",
+      "confidence": "low"
+    },
+    {
+      "parameter": "During programming or transient switching, the reverse output –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.27 / FORWARD AND REVERSE OUTPUT VOLTAGES specific performance characteristics limits are valid. ACS37002L",
+      "raw_context": "During programming or transient switching, the reverse output –40°C to 125°C (“K” temperature) range devices have device-",
+      "confidence": "low"
+    },
+    {
+      "parameter": "voltages should not be used as a DC voltage bias for an extended temperature range but continue to operate in the –",
+      "value": "40",
+      "unit": "°C",
+      "source_location": "p.27 / FORWARD AND REVERSE OUTPUT VOLTAGES specific performance characteristics limits are valid. ACS37002L",
+      "raw_context": "voltages should not be used as a DC voltage bias for an extended temperature range but continue to operate in the –40°C to 150°C",
+      "confidence": "low"
+    },
+    {
+      "parameter": "room to hot or room to cold",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.29 / Sensitivity, or Sens, is the ratio of the output swing versus the The ACS37002 features external gain selection pins that config-",
+      "raw_context": "room to hot or room to cold (25°C to 125°C/150°C or 25°C to discussing input steps, fault trip thresholds, and input to output per-",
+      "confidence": "low"
+    },
+    {
+      "parameter": "put error is mostly due to offset voltage (V ). At I =",
+      "value": "0",
+      "unit": "A",
+      "source_location": "p.30",
+      "raw_context": "put error is mostly due to offset voltage (V ). At I = 0 A, total Power supply sensitivity error, E , is defined as the percent-",
+      "confidence": "low"
+    },
+    {
+      "parameter": "programmed thresholds or the VOC voltage when V VOC >",
+      "value": "0.1",
+      "unit": "V",
+      "source_location": "p.31",
+      "raw_context": "programmed thresholds or the VOC voltage when V VOC > 0.1 V. fault performance is valid when V VOC is within the VOC operat-",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Figure",
+      "value": "11",
+      "unit": "a",
+      "source_location": "p.31",
+      "raw_context": "Figure 11 as along with the fault pin functionality.",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Overcurrent fault hysteresis, I , is defined as the mag- VOC",
+      "value": "3.3",
+      "unit": "V",
+      "source_location": "p.31",
+      "raw_context": "Overcurrent fault hysteresis, I , is defined as the mag- VOC(3.3V) (V) VOC(5 V) (V)",
+      "confidence": "low"
+    },
+    {
+      "parameter": "OCF fault persists. The factory default is",
+      "value": "0",
+      "unit": "ms",
+      "source_location": "p.32",
+      "raw_context": "OCF fault persists. The factory default is 0 ms.",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Applied current step with 10% – 90% rise time =",
+      "value": "1",
+      "unit": "μs",
+      "source_location": "p.33",
+      "raw_context": "Applied current step with 10% – 90% rise time = 1 μs",
+      "confidence": "low"
+    },
+    {
+      "parameter": "tion of",
+      "value": "8",
+      "unit": "ms",
+      "source_location": "p.34",
+      "raw_context": "tion of 8 ms; that is, temperature compensations are calculated",
+      "confidence": "low"
+    },
+    {
+      "parameter": "as well. For instance, if V error is",
+      "value": "+10",
+      "unit": "mV",
+      "source_location": "p.36",
+      "raw_context": "as well. For instance, if V error is +10 mV and gain = 4 for outputs (V and V ), the larger the decoupling capacitor",
+      "confidence": "low"
+    },
+    {
+      "parameter": "ACS",
+      "value": "37002",
+      "unit": "v",
+      "source_location": "p.38",
+      "raw_context": "ACS37002 versus continuous current at an ambient temperature,",
+      "confidence": "low"
+    },
+    {
+      "parameter": "T , of",
+      "value": "25",
+      "unit": "°C",
+      "source_location": "p.38",
+      "raw_context": "T , of 25 °C is shown in Figure 19. The thermal offset curves can",
+      "confidence": "low"
+    },
+    {
+      "parameter": "Reference MS",
+      "value": "-013",
+      "unit": "A",
+      "source_location": "p.39",
+      "raw_context": "(Reference MS-013AA)",
+      "confidence": "low"
+    },
+    {
+      "parameter": "C PCB Layout Reference View all pads a minimum of",
+      "value": "0.20",
+      "unit": "mm",
+      "source_location": "p.39",
+      "raw_context": "C PCB Layout Reference View all pads a minimum of 0.20 mm from all adjacent pads; adjust as necessary",
+      "confidence": "low"
+    },
+    {
+      "parameter": "For Reference Only; not for tooling use (reference MS",
+      "value": "-013",
+      "unit": "A",
+      "source_location": "p.40",
+      "raw_context": "For Reference Only; not for tooling use (reference MS-013AA) Lot Number Lot Number",
+      "confidence": "low"
+    }
+  ]
+}

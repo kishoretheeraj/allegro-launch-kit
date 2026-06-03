@@ -1,0 +1,8 @@
+datasheets/
+ui/frontend/node_modules/
+ui/frontend/.next/
+ui/backend/tmp/
+__pycache__/
+*.pyc
+.env
+.DS_Store
