@@ -26,10 +26,20 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
   const [processedMd, setProcessedMd] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
+  const STORAGE_KEY = `allegro-gaps-${jobId}-${filename}`;
+
   const uvDescriptions = useRef<string[]>([]);
   const [totalUnverified, setTotalUnverified] = useState(0);
-  const [edits, setEdits] = useState<Record<number, string>>({});
+  const [edits, setEdits] = useState<Record<number, string>>(() => {
+    try {
+      const saved = localStorage.getItem(`allegro-gaps-${jobId}-${filename}`);
+      return saved ? (JSON.parse(saved) as Record<number, string>) : {};
+    } catch {
+      return {};
+    }
+  });
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const [savedFlash, setSavedFlash] = useState(false);
 
   const [showCitations, setShowCitations] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -59,8 +69,24 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
     inputRefs.current = new Array(count).fill(null);
     setTotalUnverified(count);
     setProcessedMd(processed);
-    setEdits({});
+    // Do NOT reset edits here — localStorage initializer already loaded saved edits
   }, [rawContent]);
+
+  // Auto-save edits to localStorage on every change
+  useEffect(() => {
+    try {
+      if (Object.keys(edits).length > 0) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
+      } else {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+      setSavedFlash(true);
+      const t = setTimeout(() => setSavedFlash(false), 1500);
+      return () => clearTimeout(t);
+    } catch {
+      // ignore (private browsing / storage full)
+    }
+  }, [edits, STORAGE_KEY]);
 
   const filledCount = Object.keys(edits).length;
 
@@ -369,11 +395,16 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
           <div className="w-72 sm:w-80 flex-shrink-0 border-l border-gray-200 bg-gray-50 flex flex-col overflow-hidden">
             {/* Sidebar header */}
             <div className="flex-shrink-0 px-4 py-3 bg-white border-b border-gray-200">
-              <h3 className="font-semibold text-[var(--allegro-navy)] text-sm">Fill in gaps</h3>
+              <div className="flex items-center gap-2">
+                <h3 className="font-semibold text-[var(--allegro-navy)] text-sm">Fill in gaps</h3>
+                {savedFlash && (
+                  <span className="text-[11px] text-green-600 font-medium">✓ Saved</span>
+                )}
+              </div>
               <p className="text-xs text-[var(--color-muted)] mt-0.5">
                 {filledCount === totalUnverified
                   ? "All gaps filled ✓"
-                  : `${filledCount} of ${totalUnverified} completed`}
+                  : `${filledCount} of ${totalUnverified} completed — edits auto-saved`}
               </p>
             </div>
 
@@ -414,14 +445,26 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
               })}
             </div>
 
-            {/* Sidebar footer hint */}
-            <div className="flex-shrink-0 px-4 py-3 bg-white border-t border-gray-200">
+            {/* Sidebar footer */}
+            <div className="flex-shrink-0 px-4 py-3 bg-white border-t border-gray-200 flex flex-col gap-1.5">
               <p className="text-[11px] text-[var(--color-muted)] text-center leading-snug">
-                Use <strong>Download Final</strong> in the header to export with your edits.
+                Use <strong>Download Final</strong> in the header to export.
                 {filledCount < totalUnverified && (
                   <span> Unfilled gaps stay as [UNVERIFIED].</span>
                 )}
               </p>
+              {filledCount > 0 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEdits({});
+                    try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
+                  }}
+                  className="text-[11px] text-[var(--color-muted)] hover:text-red-600 underline transition-colors text-center"
+                >
+                  Clear all edits
+                </button>
+              )}
             </div>
           </div>
         )}
