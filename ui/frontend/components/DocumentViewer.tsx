@@ -48,7 +48,7 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
     let count = 0;
     const processed = rawContent
       .replace(
-        /\[UNVERIFIED\s*[—\-]\s*needs human:\s*([\s\S]*?)\]/gi,
+        /\[UNVERIFIED\s*[—–\-]\s*needs human:\s*([\s\S]*?)\]/gi,
         (_, inner: string) => {
           descs.push(inner.trim().replace(/\n/g, " "));
           return `**⚠UV${count++}**`;
@@ -111,7 +111,7 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
     if (!rawContent) return;
     let editIdx = 0;
     const finalMd = rawContent.replace(
-      /\[UNVERIFIED\s*[—\-]\s*needs human:\s*([\s\S]*?)\]/gi,
+      /\[UNVERIFIED\s*[—–\-]\s*needs human:\s*([\s\S]*?)\]/gi,
       (original) => {
         const val = edits[editIdx++];
         return val !== undefined ? val : original;
@@ -201,6 +201,13 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
             <span className="hidden sm:inline">Citations</span>
           </button>
 
+          {/* No-gaps indicator (only for documents with zero UNVERIFIED markers) */}
+          {rawContent && totalUnverified === 0 && (
+            <span className="text-xs text-green-700 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full font-medium whitespace-nowrap">
+              ✓ No gaps to fill
+            </span>
+          )}
+
           {/* Download raw markdown */}
           <a
             href={getDownloadUrl(jobId, filename)}
@@ -210,6 +217,20 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
             <Download size={13} aria-hidden="true" />
             <span className="hidden sm:inline">Markdown</span>
           </a>
+
+          {/* Download Final — always visible once content is loaded */}
+          {rawContent && (
+            <button
+              type="button"
+              onClick={handleDownloadFinal}
+              title={filledCount > 0 ? `Download with ${filledCount} gap(s) filled` : "Download final draft"}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--allegro-navy)] text-white px-3 py-1.5 text-sm font-semibold hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2"
+            >
+              <Download size={13} aria-hidden="true" />
+              <span className="hidden sm:inline">Download Final</span>
+              <span className="sm:hidden">Final</span>
+            </button>
+          )}
 
           {/* Close */}
           <button
@@ -393,21 +414,14 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
               })}
             </div>
 
-            {/* Download Final */}
-            <div className="flex-shrink-0 px-4 py-4 bg-white border-t border-gray-200 flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={handleDownloadFinal}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--allegro-navy)] text-white py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2"
-              >
-                <Download size={14} aria-hidden="true" />
-                Download Final
-              </button>
-              {filledCount < totalUnverified && (
-                <p className="text-[11px] text-[var(--color-muted)] text-center leading-snug">
-                  Unfilled gaps stay as [UNVERIFIED] in the downloaded file
-                </p>
-              )}
+            {/* Sidebar footer hint */}
+            <div className="flex-shrink-0 px-4 py-3 bg-white border-t border-gray-200">
+              <p className="text-[11px] text-[var(--color-muted)] text-center leading-snug">
+                Use <strong>Download Final</strong> in the header to export with your edits.
+                {filledCount < totalUnverified && (
+                  <span> Unfilled gaps stay as [UNVERIFIED].</span>
+                )}
+              </p>
             </div>
           </div>
         )}
