@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
-import { X, Download, Loader2, Eye, EyeOff } from "lucide-react";
+import { X, Download, Loader2, Eye, EyeOff, PanelRight, PanelRightClose } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getPreviewContent, getDownloadUrl } from "@/lib/api";
@@ -13,19 +13,26 @@ interface Props {
   onClose: () => void;
 }
 
+// Extract plain text from React children (handles string, number, array)
+function extractText(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (typeof children === "number") return String(children);
+  if (Array.isArray(children)) return children.map(extractText).join("");
+  return "";
+}
+
 export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
   const [rawContent, setRawContent] = useState<string | null>(null);
   const [processedMd, setProcessedMd] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
-  // UNVERIFIED editing
   const uvDescriptions = useRef<string[]>([]);
   const [totalUnverified, setTotalUnverified] = useState(0);
   const [edits, setEdits] = useState<Record<number, string>>({});
-  const [activeEdit, setActiveEdit] = useState<number | null>(null);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  // Citation visibility (off by default → cleaner reading)
   const [showCitations, setShowCitations] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Fetch raw markdown
   useEffect(() => {
@@ -34,7 +41,7 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
       .catch((e) => setError(e instanceof Error ? e.message : "Failed to load document"));
   }, [jobId, filename]);
 
-  // Parse raw markdown: enumerate UNVERIFIED markers and replace with tokens
+  // Parse UNVERIFIED markers and citations
   useEffect(() => {
     if (!rawContent) return;
     const descs: string[] = [];
@@ -43,27 +50,26 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
       .replace(
         /\[UNVERIFIED\s*[—\-]\s*needs human:\s*([\s\S]*?)\]/gi,
         (_, inner: string) => {
-          const idx = count++;
           descs.push(inner.trim().replace(/\n/g, " "));
-          return `**⚠UV${idx}**`;
+          return `**⚠UV${count++}**`;
         }
       )
       .replace(/\[datasheet\s+(.*?)\]/gi, (_, loc: string) => `*[datasheet ${loc}]*`);
     uvDescriptions.current = descs;
+    inputRefs.current = new Array(count).fill(null);
     setTotalUnverified(count);
     setProcessedMd(processed);
     setEdits({});
-    setActiveEdit(null);
   }, [rawContent]);
 
   const filledCount = Object.keys(edits).length;
 
-  // ESC closes modal only when no edit is active
+  // ESC closes modal
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape" && activeEdit === null) onClose();
+      if (e.key === "Escape") onClose();
     },
-    [onClose, activeEdit]
+    [onClose]
   );
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -77,6 +83,29 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
       document.body.style.overflow = "";
     };
   }, []);
+
+  function handleSetEdit(idx: number, value: string) {
+    setEdits((prev) => {
+      if (!value) {
+        const next = { ...prev };
+        delete next[idx];
+        return next;
+      }
+      return { ...prev, [idx]: value };
+    });
+  }
+
+  function scrollToInput(idx: number) {
+    setSidebarOpen(true);
+    // Let the sidebar open, then scroll
+    requestAnimationFrame(() => {
+      const el = inputRefs.current[idx];
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.focus();
+      }
+    });
+  }
 
   function handleDownloadFinal() {
     if (!rawContent) return;
@@ -99,6 +128,8 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
     URL.revokeObjectURL(url);
   }
 
+  const hasSidebar = totalUnverified > 0;
+
   return (
     <div
       role="dialog"
@@ -106,7 +137,7 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
       aria-label={label}
       className="fixed inset-0 z-50 flex flex-col bg-[var(--allegro-warm-gray)]"
     >
-      {/* Header */}
+      {/* ── Header ──────────────────────────────────────────────────── */}
       <div className="flex-shrink-0 bg-white border-b border-[var(--allegro-border)] px-4 sm:px-6 py-3 flex items-center justify-between gap-3 flex-wrap">
         <div className="min-w-0">
           <h2 className="font-semibold text-[var(--allegro-navy)] text-base truncate">{label}</h2>
@@ -115,7 +146,7 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
 
         <div className="flex items-center gap-2 flex-wrap flex-shrink-0">
           {/* Gap progress pill */}
-          {totalUnverified > 0 && (
+          {hasSidebar && (
             <span
               className={[
                 "text-xs px-2.5 py-1 rounded-full border font-medium whitespace-nowrap",
@@ -126,6 +157,28 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
             >
               {filledCount}/{totalUnverified} gaps filled
             </span>
+          )}
+
+          {/* Sidebar toggle */}
+          {hasSidebar && (
+            <button
+              type="button"
+              onClick={() => setSidebarOpen((v) => !v)}
+              title={sidebarOpen ? "Hide gap filler" : "Show gap filler"}
+              className={[
+                "inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2",
+                sidebarOpen
+                  ? "border-[var(--allegro-orange)] bg-orange-50 text-[var(--allegro-orange)]"
+                  : "border-[var(--allegro-border)] bg-white text-[var(--color-muted)] hover:bg-gray-50",
+              ].join(" ")}
+            >
+              {sidebarOpen ? (
+                <PanelRightClose size={13} aria-hidden="true" />
+              ) : (
+                <PanelRight size={13} aria-hidden="true" />
+              )}
+              <span className="hidden sm:inline">Fill gaps</span>
+            </button>
           )}
 
           {/* Citations toggle */}
@@ -145,36 +198,18 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
             ) : (
               <Eye size={13} aria-hidden="true" />
             )}
-            Citations
+            <span className="hidden sm:inline">Citations</span>
           </button>
 
           {/* Download raw markdown */}
           <a
             href={getDownloadUrl(jobId, filename)}
             download={filename}
-            aria-label={`Download ${label} as Markdown`}
             className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--allegro-border)] bg-white px-3 py-1.5 text-sm font-medium text-[var(--allegro-navy)] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2"
           >
             <Download size={13} aria-hidden="true" />
-            Markdown
+            <span className="hidden sm:inline">Markdown</span>
           </a>
-
-          {/* Download Final — with filled-in values substituted */}
-          {rawContent && (
-            <button
-              type="button"
-              onClick={handleDownloadFinal}
-              title={
-                filledCount > 0
-                  ? `Download with ${filledCount} gap${filledCount > 1 ? "s" : ""} filled`
-                  : "Download final draft"
-              }
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--allegro-navy)] text-white px-3 py-1.5 text-sm font-semibold hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2"
-            >
-              <Download size={13} aria-hidden="true" />
-              Download Final
-            </button>
-          )}
 
           {/* Close */}
           <button
@@ -188,184 +223,195 @@ export function DocumentViewer({ jobId, filename, label, onClose }: Props) {
         </div>
       </div>
 
-      {/* Body */}
-      <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-6">
-        <div className="mx-auto max-w-3xl">
-          {error && (
-            <div className="rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
-              {error}
-            </div>
-          )}
+      {/* ── Body: document + sidebar ──────────────────────────────── */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Document panel */}
+        <div className="flex-1 overflow-y-auto px-4 sm:px-8 py-6">
+          <div className="mx-auto max-w-3xl">
+            {error && (
+              <div className="rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
+                {error}
+              </div>
+            )}
 
-          {!processedMd && !error && (
-            <div className="flex items-center justify-center py-24 text-[var(--color-muted)]">
-              <Loader2 size={24} className="animate-spin" aria-label="Loading document" />
-            </div>
-          )}
+            {!processedMd && !error && (
+              <div className="flex items-center justify-center py-24 text-[var(--color-muted)]">
+                <Loader2 size={24} className="animate-spin" aria-label="Loading document" />
+              </div>
+            )}
 
-          {processedMd && (
-            <div
-              className="
-                prose prose-sm max-w-none
-                prose-headings:text-[var(--allegro-navy)] prose-headings:font-bold
-                prose-h1:text-2xl prose-h2:text-xl prose-h3:text-base
-                prose-p:text-[var(--allegro-navy)] prose-p:leading-relaxed
-                prose-li:text-[var(--allegro-navy)]
-                prose-strong:text-[var(--allegro-navy)]
-                prose-em:text-[var(--color-muted)] prose-em:not-italic prose-em:text-[11px]
-                prose-code:text-[var(--allegro-navy)] prose-code:bg-gray-100 prose-code:rounded prose-code:px-1
-                prose-blockquote:border-[var(--allegro-orange)] prose-blockquote:bg-amber-50 prose-blockquote:rounded-r-lg prose-blockquote:text-amber-800 prose-blockquote:text-sm
-                prose-table:w-full prose-table:text-sm
-                prose-th:text-[var(--allegro-navy)] prose-th:font-semibold prose-th:bg-gray-50
-                prose-td:text-[var(--allegro-navy)]
-                [&_table]:border-collapse [&_table]:w-full
-                [&_th]:border [&_th]:border-gray-200 [&_th]:px-3 [&_th]:py-2 [&_th]:text-left
-                [&_td]:border [&_td]:border-gray-200 [&_td]:px-3 [&_td]:py-2
-                [&_tr:nth-child(even)]:bg-gray-50
-              "
-            >
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  // UNVERIFIED editable badges
-                  strong({ children }) {
-                    const text =
-                      typeof children === "string"
-                        ? children
-                        : Array.isArray(children)
-                        ? children.map((c) => (typeof c === "string" ? c : "")).join("")
-                        : String(children ?? "");
-                    const match = text.match(/^⚠UV(\d+)$/);
-                    if (!match) {
-                      return <strong>{children}</strong>;
-                    }
+            {processedMd && (
+              <div
+                className="
+                  prose prose-sm max-w-none
+                  prose-headings:text-[var(--allegro-navy)] prose-headings:font-bold
+                  prose-h1:text-2xl prose-h2:text-xl prose-h3:text-base
+                  prose-p:text-[var(--allegro-navy)] prose-p:leading-relaxed
+                  prose-li:text-[var(--allegro-navy)]
+                  prose-strong:text-[var(--allegro-navy)]
+                  prose-em:text-[var(--color-muted)] prose-em:not-italic prose-em:text-[11px]
+                  prose-code:text-[var(--allegro-navy)] prose-code:bg-gray-100 prose-code:rounded prose-code:px-1
+                  prose-blockquote:border-[var(--allegro-orange)] prose-blockquote:bg-amber-50 prose-blockquote:rounded-r-lg prose-blockquote:text-amber-800 prose-blockquote:text-sm
+                  prose-table:w-full prose-table:text-sm
+                  prose-th:text-[var(--allegro-navy)] prose-th:font-semibold prose-th:bg-gray-50 prose-th:text-left
+                  prose-td:text-[var(--allegro-navy)]
+                  [&_table]:border-collapse [&_table]:w-full
+                  [&_th]:border [&_th]:border-gray-200 [&_th]:px-3 [&_th]:py-2
+                  [&_td]:border [&_td]:border-gray-200 [&_td]:px-3 [&_td]:py-2
+                  [&_tr:nth-child(even)_td]:bg-gray-50
+                "
+              >
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    // UNVERIFIED status badges (read-only; click → focus sidebar input)
+                    strong({ children }) {
+                      const text = extractText(children);
+                      const match = text.match(/^⚠UV(\d+)$/);
+                      if (!match) return <strong>{children}</strong>;
 
-                    const idx = parseInt(match[1], 10);
-                    const description = uvDescriptions.current[idx] ?? "";
-                    const filledValue = edits[idx];
+                      const idx = parseInt(match[1], 10);
+                      const description = uvDescriptions.current[idx] ?? "";
+                      const filledValue = edits[idx];
 
-                    // Active: show input
-                    if (activeEdit === idx) {
-                      return (
-                        <span className="inline-flex items-center">
-                          <input
-                            autoFocus
-                            defaultValue={filledValue ?? ""}
-                            onBlur={(e) => {
-                              const val = e.target.value.trim();
-                              setEdits((prev) => {
-                                if (!val) {
-                                  const next = { ...prev };
-                                  delete next[idx];
-                                  return next;
-                                }
-                                return { ...prev, [idx]: val };
-                              });
-                              setActiveEdit(null);
-                            }}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") e.currentTarget.blur();
-                              if (e.key === "Escape") setActiveEdit(null);
-                            }}
-                            placeholder={description}
-                            className="border border-amber-400 rounded px-2 py-0.5 text-[12px] text-[var(--allegro-navy)] bg-amber-50 focus:outline-none focus:ring-1 focus:ring-amber-500 min-w-[200px] max-w-[360px]"
-                          />
-                        </span>
-                      );
-                    }
-
-                    // Filled: green pill, click to re-edit
-                    if (filledValue !== undefined) {
+                      if (filledValue) {
+                        return (
+                          <button
+                            type="button"
+                            onClick={() => scrollToInput(idx)}
+                            title="Click to re-edit in the gap filler →"
+                            className="inline-flex items-center gap-1 bg-green-100 text-green-800 text-[12px] px-2 py-0.5 rounded border border-green-300 font-medium hover:bg-green-200 transition-colors cursor-pointer"
+                          >
+                            ✓ {filledValue}
+                          </button>
+                        );
+                      }
                       return (
                         <button
                           type="button"
-                          onClick={() => setActiveEdit(idx)}
-                          title="Click to edit"
-                          className="inline-flex items-center gap-1 bg-green-100 text-green-800 text-[12px] px-2 py-0.5 rounded border border-green-300 font-medium hover:bg-green-200 transition-colors cursor-pointer"
+                          onClick={() => scrollToInput(idx)}
+                          title="Click to fill in the gap filler →"
+                          className="inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-[12px] px-1.5 py-0.5 rounded border border-amber-300 hover:bg-amber-200 transition-colors cursor-pointer"
                         >
-                          ✓ {filledValue}
+                          <span className="font-semibold">⚠</span>
+                          <span className="font-normal">{description}</span>
                         </button>
                       );
-                    }
+                    },
 
-                    // Unfilled: amber badge, click to fill
-                    return (
-                      <button
-                        type="button"
-                        onClick={() => setActiveEdit(idx)}
-                        title={`Click to fill: ${description}`}
-                        className="inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-[12px] px-1.5 py-0.5 rounded border border-amber-300 hover:bg-amber-200 transition-colors cursor-pointer group"
-                      >
-                        <span className="font-semibold">⚠ needs human:</span>
-                        <span className="font-normal text-amber-700 ml-0.5">{description}</span>
-                        <span className="opacity-0 group-hover:opacity-60 text-[10px] ml-0.5 transition-opacity">
-                          ✎
-                        </span>
-                      </button>
-                    );
-                  },
-
-                  // Datasheet citations — toggle on/off
-                  em({ children }) {
-                    const text =
-                      typeof children === "string" ? children : String(children ?? "");
-                    if (text.startsWith("[datasheet")) {
-                      if (!showCitations) return <></>;
-                      return (
-                        <span className="text-gray-400 text-[11px] not-italic font-normal ml-1">
-                          {children}
-                        </span>
-                      );
-                    }
-                    return <em>{children}</em>;
-                  },
-
-                  // Checkbox list items
-                  li({ children, ...props }) {
-                    const text =
-                      typeof children === "string" ? children : String(children ?? "");
-                    if (
-                      text.startsWith("[ ]") ||
-                      text.startsWith("[x]") ||
-                      text.startsWith("[X]")
-                    ) {
-                      const checked = text.startsWith("[x]") || text.startsWith("[X]");
-                      const rest = text.replace(/^\[[ xX]\]\s*/, "");
-                      return (
-                        <li
-                          {...props}
-                          className="list-none -ml-4 flex items-start gap-2"
-                        >
-                          <span className="flex-shrink-0 text-[var(--allegro-navy)] mt-0.5">
-                            {checked ? "☑" : "☐"}
+                    // Datasheet citations — toggle on/off
+                    em({ children }) {
+                      const text = extractText(children);
+                      if (text.startsWith("[datasheet")) {
+                        if (!showCitations) return <></>;
+                        return (
+                          <span className="text-gray-400 text-[11px] not-italic font-normal ml-1">
+                            {children}
                           </span>
-                          <span>{rest}</span>
-                        </li>
-                      );
-                    }
-                    return <li {...props}>{children}</li>;
-                  },
-                }}
-              >
-                {processedMd}
-              </ReactMarkdown>
-            </div>
-          )}
-        </div>
-      </div>
+                        );
+                      }
+                      return <em>{children}</em>;
+                    },
 
-      {/* Footer hint when unfilled gaps remain */}
-      {totalUnverified > 0 && filledCount < totalUnverified && (
-        <div className="flex-shrink-0 bg-amber-50 border-t border-amber-200 px-4 sm:px-6 py-2.5 text-center">
-          <p className="text-xs text-amber-700">
-            Click any{" "}
-            <span className="font-semibold bg-amber-100 border border-amber-300 rounded px-1 py-0.5">
-              ⚠ needs human
-            </span>{" "}
-            badge to fill it in — then use <strong>Download Final</strong> to export.
-          </p>
+                    // Checkbox list items
+                    li({ children, ...props }) {
+                      const text = extractText(children);
+                      if (
+                        text.startsWith("[ ]") ||
+                        text.startsWith("[x]") ||
+                        text.startsWith("[X]")
+                      ) {
+                        const checked = !text.startsWith("[ ]");
+                        const rest = text.replace(/^\[[ xX]\]\s*/, "");
+                        return (
+                          <li {...props} className="list-none -ml-4 flex items-start gap-2">
+                            <span className="flex-shrink-0 text-[var(--allegro-navy)] mt-0.5">
+                              {checked ? "☑" : "☐"}
+                            </span>
+                            <span>{rest}</span>
+                          </li>
+                        );
+                      }
+                      return <li {...props}>{children}</li>;
+                    },
+                  }}
+                >
+                  {processedMd}
+                </ReactMarkdown>
+              </div>
+            )}
+          </div>
         </div>
-      )}
+
+        {/* ── Gap filler sidebar ─────────────────────────────────── */}
+        {hasSidebar && sidebarOpen && (
+          <div className="w-72 sm:w-80 flex-shrink-0 border-l border-gray-200 bg-gray-50 flex flex-col overflow-hidden">
+            {/* Sidebar header */}
+            <div className="flex-shrink-0 px-4 py-3 bg-white border-b border-gray-200">
+              <h3 className="font-semibold text-[var(--allegro-navy)] text-sm">Fill in gaps</h3>
+              <p className="text-xs text-[var(--color-muted)] mt-0.5">
+                {filledCount === totalUnverified
+                  ? "All gaps filled ✓"
+                  : `${filledCount} of ${totalUnverified} completed`}
+              </p>
+            </div>
+
+            {/* Gap inputs */}
+            <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-4">
+              {Array.from({ length: totalUnverified }, (_, idx) => {
+                const desc = uvDescriptions.current[idx] ?? "";
+                const filled = edits[idx];
+                return (
+                  <div key={idx} className="flex flex-col gap-1.5">
+                    <label
+                      htmlFor={`gap-${idx}`}
+                      className="text-[11px] font-semibold text-[var(--allegro-navy)] leading-snug"
+                    >
+                      {idx + 1}. {desc}
+                    </label>
+                    <input
+                      id={`gap-${idx}`}
+                      ref={(el) => {
+                        inputRefs.current[idx] = el;
+                      }}
+                      type="text"
+                      value={edits[idx] ?? ""}
+                      onChange={(e) => handleSetEdit(idx, e.target.value)}
+                      placeholder="Type value here…"
+                      className={[
+                        "w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-1 transition-colors",
+                        filled
+                          ? "border-green-300 bg-green-50 text-[var(--allegro-navy)]"
+                          : "border-gray-200 bg-white text-[var(--allegro-navy)] placeholder:text-gray-400 hover:border-gray-300",
+                      ].join(" ")}
+                    />
+                    {filled && (
+                      <span className="text-[11px] text-green-600 font-medium">✓ Filled</span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Download Final */}
+            <div className="flex-shrink-0 px-4 py-4 bg-white border-t border-gray-200 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={handleDownloadFinal}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--allegro-navy)] text-white py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--allegro-orange)] focus:ring-offset-2"
+              >
+                <Download size={14} aria-hidden="true" />
+                Download Final
+              </button>
+              {filledCount < totalUnverified && (
+                <p className="text-[11px] text-[var(--color-muted)] text-center leading-snug">
+                  Unfilled gaps stay as [UNVERIFIED] in the downloaded file
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
